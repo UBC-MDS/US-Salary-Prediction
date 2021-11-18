@@ -6,17 +6,19 @@ We as contributors to this project aim to facilitate a welcoming and judgement-f
 ### Expectations of Behaviour
 All contributors must behave in a respectful, orderly and welcoming manner. We endeavour to ensure that all contributors are treated with respect, and any form of discrimination, harassment or derogatory remarks will not be tolerated by the project maintainers. 
 
-Behaviour that we believe will serve to produce a more productive environment includes, but is not limited to:
-The provision and acceptance of genuine constructive criticism
-Acting in the best interests of the community as a whole
-Being respectful to differing points of view, and working to understand and be empathetic towards a diversity of opinions
+Behaviour that we believe will serve to produce a more productive environment includes, but is not limited to:  
+  
+- The provision and acceptance of genuine constructive criticism
+- Acting in the best interests of the community as a whole
+- Being respectful to differing points of view, and working to understand and be empathetic towards a diversity of opinions
 
-Unacceptable behaviour includes but is not limited to:
-Unprofessional or disrespectful language in communication
-Harassment
-Discrimination
-Personal attacks or condescending remarks 
-The use of sexual remarks or other forms of sexual behaviour
+Unacceptable behaviour includes but is not limited to:  
+  
+- Unprofessional or disrespectful language in communication
+- Harassment
+- Discrimination
+- Personal attacks or condescending remarks 
+- The use of sexual remarks or other forms of sexual behaviour
 
 Any contributor found to be engaging in any of the behaviours above will be expelled from the project and may face other repercussions.
 
