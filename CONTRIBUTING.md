@@ -1,4 +1,3 @@
 # Contributing File
 
-We welcome all contributions to this project! If you notice a bug, or have a feature request, please open up an issue here. If you’d like to contribute a feature or bug fix, you can fork our repo and submit a pull request. We will review pull requests. All contributors must abide by our code of conduct.
-Before you make a substantial pull request, you should always file an issue and make sure someone from the team agrees that it's a problem. 
+We are eager to welcome any contributions to our project and encourage open participation. If you notice a bug or want to suggest additional features, feel free to fork our repository and open a pull request. To make sure you catch our attention, be sure to open a github issue, so that we can easily review any suggested changes or errors. Please ensure that you follow our code of conduct while contributing to this project.
