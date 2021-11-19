@@ -20,11 +20,11 @@ Unacceptable behaviour includes but is not limited to:
 - Personal attacks or condescending remarks 
 - The use of sexual remarks or other forms of sexual behaviour
 
+### Consequence
 Any contributor found to be engaging in any of the behaviours above will be expelled from the project and may face other repercussions.
 
 ### Enforcement
-If any instances of abusive, harassing or other unacceptable behavior are noticed, 
-We will first try to resolve it by a team discussion to discuss the unacceptable behaviour.
-If this is not working, it will result in a discussion with a TA or Lab Instructor. 
+If any instances of abusive, harassing or other unacceptable behavior are noticed, we will first try to resolve it by a team discussion to discuss the unacceptable behaviour.  
+If this is not working, it will result in a discussion with a TA or Lab Instructor.  
  
 
