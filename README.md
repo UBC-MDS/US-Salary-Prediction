@@ -1,8 +1,8 @@
 # DSCI_522_group29
-DSCI_522_group29 s
+DSCI_522_group29
 
 ## Project Proposal 
-authors: Cuthbert Chow, Rong Li, Andy Yang
+Authors: Cuthbert Chow, Rong Li, Andy Yang  
 Data analysis to predict manager salaries for DSCI 522(Data Science Workflows); a course in the Master of Data Science program at the University of British Columbia 
 
 ### About
@@ -14,4 +14,4 @@ We will generate EDA tables which will list all data features, along with their 
 We would share the results of our analysis in a literate coding document (specifically, a jupyter notebook), which would interleave the resulting figures and tables as well as other code contained in scripts with narrative explanations. 
 
 ### Reference:
-The dataset we are analysing comes from the “Ask a Manager Salary Survey” from the blog by Alison Green. This dataset contains survey data gathered from managers working in a variety of industries, and can be found here. 
+The dataset we are analysing comes from the “Ask a Manager Salary Survey” from the blog by Alison Green. This dataset contains survey data gathered from managers working in a variety of industries, and can be found [here](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-05-18/survey.csv).
