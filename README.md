@@ -7,7 +7,7 @@ Data analysis project to predict salaries for DSCI 522 (Data Science Workflows);
 
 ### About
 
-The main predictive question we wish to answer is what we can expect a person's salary to be, given a certain professional history (such as years of experience, industry, country, or age). We will use a linear regression model to do the prediction. In the process, we wish to understand which factors provide the most predictive power when trying to predict a person's salary. 
+The main predictive question we wish to answer is what we can expect a person's salary to be in the US, given a certain professional history (such as years of experience, industry, or age). We will use a linear regression model to do the prediction. In the process, we wish to understand which factors provide the most predictive power when trying to predict a person's salary. 
 
 We will generate EDA tables which will list all data features, along with their data types and distributions (i.e. mean, quartiles, etc.) if they are numeric. One EDA figure we will create is a scatterplot matrix of continuous variables against the output variable (salary), and histograms of all the continuous variables which will further help us quantify their distributions.
 
