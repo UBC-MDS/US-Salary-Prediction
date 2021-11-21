@@ -1,4 +1,4 @@
-# Salary Predictor
+# US Salary Prediction
 DSCI_522_group29
 
 ## Project Proposal 
@@ -9,7 +9,7 @@ Data analysis project to predict salaries for DSCI 522 (Data Science Workflows);
 
 The main predictive question we wish to answer is what we can expect a person's salary to be in the US, given a certain professional history (such as years of experience, industry, or age). We will use a linear regression model to do the prediction. In the process, we wish to understand which factors provide the most predictive power when trying to predict a person's salary. 
 
-We will generate EDA tables which will list all data features, along with their data types and distributions (i.e. mean, quartiles, etc.) if they are numeric. One EDA figure we will create is a scatterplot matrix of continuous variables against the output variable (salary), and histograms of all the continuous variables which will further help us quantify their distributions. Our EDA file can be found [here](https://github.com/UBC-MDS/DSCI_522_group29/blob/main/EDA/EDA.ipynb)
+We will generate EDA tables which will list all data features, along with their data types and distributions (i.e. mean, quartiles, etc.) if they are numeric. One EDA figure we will create is a scatterplot matrix of continuous variables against the output variable (salary), and histograms of all the continuous variables which will further help us quantify their distributions. Our EDA file can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/EDA/EDA.ipynb)
 
 We would share the results of our analysis in a literate coding document (specifically, a jupyter notebook), which would interleave the resulting figures and tables as well as other code contained in scripts with narrative explanations. 
 
