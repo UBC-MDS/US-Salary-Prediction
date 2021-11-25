@@ -2,7 +2,7 @@
 # date: 2021-11-18
 
 """This script downloads data from a given filepath.
-Usage: demo.py --URL=<URL> --filepath=<filepath>
+Usage: DownloadData.py --URL=<URL> --filepath=<filepath>
 
 Options:
 --URL=<URL>             URL to download csv data from (this is a required option)
@@ -17,7 +17,7 @@ def main(opt):
     url = opt["--URL"]
     filepath = opt["--filepath"]
     dataset = pd.read_csv(url)
-    dataset.to_csv(filepath)
+    dataset.to_csv(filepath, index = False)
     print("Data successfully downloaded to: " + filepath)
 
 if __name__ == "__main__":
