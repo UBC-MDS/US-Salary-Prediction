@@ -1,7 +1,7 @@
 # author: Andy Yang
 # date: 2021-11-18
 
-"""This script prints out docopt args.
+"""This script downloads data from a given filepath.
 Usage: demo.py --URL=<URL> --filepath=<filepath>
 
 Options:
