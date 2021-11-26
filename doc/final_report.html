@@ -196,12 +196,13 @@ pre code {
 <div id="TOC">
 <ul>
 <li><a href="#aim-and-summary">Aim and Summary</a></li>
-<li><a href="#methods">Methods</a>
+<li><a href="#methods">Methods</a></li>
+<li><a href="#results-discussion">Results &amp; Discussion</a>
 <ul>
 <li><a href="#data">Data</a></li>
-</ul></li>
 <li><a href="#analysis">Analysis</a></li>
 <li><a href="#results-and-discussion">Results and Discussion</a></li>
+</ul></li>
 <li><a href="#references">References</a></li>
 </ul>
 </div>
@@ -212,11 +213,14 @@ pre code {
 </div>
 <div id="methods" class="section level2">
 <h2>Methods</h2>
+<p>The Python <span class="citation">(Van Rossum and Drake 2009)</span> and R <span class="citation">(R Core Team 2021)</span> programming languages and the following Python and R packages were used to perform the data analysis and present results: Pandas <span class="citation">(<strong>pandas?</strong>)</span>, Scikit-learn <span class="citation">(Pedregosa et al. 2011)</span>, Altair <span class="citation">(VanderPlas et al. 2018)</span>, docopt <span class="citation">(Keleshev 2014)</span>, knitr <span class="citation">(Xie 2021)</span>.</p>
+</div>
+<div id="results-discussion" class="section level1">
+<h1>Results &amp; Discussion</h1>
 <div id="data" class="section level3">
 <h3>Data</h3>
 <p>The dataset we are analysing comes from a salary survey from the “Ask a Manager” blog by Alison Green. This dataset contains survey data gathered from “Ask a Manager” readers working in a variety of industries. <span class="citation">(Green 2021)</span></p>
-<p>We used Altair <span class="citation">(VanderPlas et al. 2018)</span> to create figures, Pandas <span class="citation">(team 2020)</span> to do data processing, and Scikit-learn <span class="citation">(Pedregosa et al. 2011)</span> to perform statistical analysis.</p>
-</div>
+<p>We used Altair <span class="citation">(VanderPlas et al. 2018)</span> to create figures, Pandas <span class="citation">(Reback et al. 2020)</span> to do data processing, and Scikit-learn <span class="citation">(Pedregosa et al. 2011)</span> to perform statistical analysis.</p>
 </div>
 <div id="analysis" class="section level2">
 <h2>Analysis</h2>
@@ -350,22 +354,35 @@ Figure 1
 Figure 2
 </p>
 </div>
-<p>As we can see, the higher salaries are roughly associated with the older age groups, the longer experience and the higher education, which indicates those are likely to be good predictors of our target.</p>
+<p>As we can see in Figure 2, the higher salaries are roughly associated with the older age groups, the longer experience and the higher education, which indicates those are likely to be good predictors of our target.</p>
 </div>
-<div id="references" class="section level2 unnumbered">
-<h2 class="unnumbered">References</h2>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1 class="unnumbered">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-green_2021" class="csl-entry">
 Green, Alison. 2021. <span>“How Much Money Do You Make?”</span> <em>Ask A Manager</em>. <a href="https://www.askamanager.org/2021/04/how-much-money-do-you-make-4.html">https://www.askamanager.org/2021/04/how-much-money-do-you-make-4.html</a>.
 </div>
+<div id="ref-docopt" class="csl-entry">
+Keleshev, Vladimir. 2014. <em>Docopt: Command-Line Interface Description Language</em>. <a href="https://github.com/docopt/docopt">https://github.com/docopt/docopt</a>.
+</div>
 <div id="ref-pedregosa2011scikit" class="csl-entry">
 Pedregosa, Fabian, Gaël Varoquaux, Alexandre Gramfort, Vincent Michel, Bertrand Thirion, Olivier Grisel, Mathieu Blondel, et al. 2011. <span>“Scikit-Learn: Machine Learning in Python.”</span> <em>Journal of Machine Learning Research</em> 12 (Oct): 2825–30.
 </div>
+<div id="ref-r" class="csl-entry">
+R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
 <div id="ref-reback2020pandas" class="csl-entry">
-team, The pandas development. 2020. <em>Pandas-Dev/Pandas: Pandas</em> (version latest). Zenodo. <a href="https://doi.org/10.5281/zenodo.3509134">https://doi.org/10.5281/zenodo.3509134</a>.
+Reback, Jeff, jbrockmendel, Wes McKinney, Joris Van den Bossche, Tom Augspurger, Phillip Cloud, Simon Hawkins, et al. 2020. <em>Pandas-Dev/Pandas: Pandas</em> (version latest). Zenodo. <a href="https://doi.org/10.5281/zenodo.3509134">https://doi.org/10.5281/zenodo.3509134</a>.
+</div>
+<div id="ref-python" class="csl-entry">
+Van Rossum, Guido, and Fred L. Drake. 2009. <em>Python 3 Reference Manual</em>. Scotts Valley, CA: CreateSpace.
 </div>
 <div id="ref-vanderplas2018altair" class="csl-entry">
 VanderPlas, Jacob, Brian Granger, Jeffrey Heer, Dominik Moritz, Kanit Wongsuphasawat, Arvind Satyanarayan, Eitan Lees, Ilia Timofeev, Ben Welsh, and Scott Sievert. 2018. <span>“Altair: Interactive Statistical Visualizations for Python.”</span> <em>Journal of Open Source Software</em> 3 (32): 1057.
+</div>
+<div id="ref-knitr" class="csl-entry">
+Xie, Yihui. 2021. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
 </div>
 </div>
 </div>
