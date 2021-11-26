@@ -38,7 +38,7 @@ def main(opt):
                 "united states of america",
             ]
         )
-    ].drop(columns=['country', 'race', 'gender', 'timestamp'])
+    ].drop(columns=['country', 'race', 'gender', 'timestamp',"additional_context_on_job_title", "additional_context_on_income"])
 
     train_df, test_df = train_test_split(df_clean, test_size=0.3, random_state=123)
     train_df.to_csv(filepath + '/train_df.csv', index = False)
@@ -48,3 +48,5 @@ def main(opt):
 
 if __name__ == "__main__":
     main(opt)
+
+
