@@ -1,0 +1,12 @@
+Features,Not Null Count,Null Count,Number of Unique Values,Some Unique Values,Types
+how_old_are_you,15037,0,7,"['45-54', '25-34', '35-44', '55-64', '65 or over']",object
+industry,15008,29,675,"['Accounting, Banking & Finance', 'Engineering or Manufacturing', 'Education (Higher Education)', 'Computing or Tech', 'Health care']",object
+job_title,15037,0,7970,"['CPA', 'Sales Analyst 1', 'Director of Enrollment', 'Process Analyst', 'Senior Data Scientist']",object
+additional_context_on_job_title,3971,11066,3861,"[nan, 'I calculate commissions for our sales team', 'I worked in R&D (not manufacturing) and manage small to medium projects', 'Support CFPs', 'Government contract position, so the title is very generalized']",object
+other_monetary_comp,11282,3755,583,"[10000.0, 2700.0, 0.0, 5000.0, 145000.0]",float64
+additional_context_on_income,1649,13388,1624,"[nan, 'Bonus plus RSUs', 'Crappy benefits', 'I believe I am underpaid based on my credentials and experience, however, my work is a niche specialty (i.e. not many employers) and I am not willing to relocate, so I have accepted this salary based on the personal trade-offs.', 'If the company does well and the employee does well in their rle you can earn a bonus of 4%.']",object
+state,14914,123,108,"['California', 'Pennsylvania', 'Colorado', 'Virginia', 'Oregon']",object
+city,15006,31,2482,"['Palm Springs', 'Pittsburgh', 'Fort Collins', 'Arlington', 'Boulder']",object
+overall_years_of_professional_experience,15037,0,8,"['21 - 30 years', '11 - 20 years', '8 - 10 years', '2 - 4 years', '5-7 years']",object
+years_of_experience_in_field,15037,0,8,"['8 - 10 years', '5-7 years', '11 - 20 years', '2 - 4 years', '1 year or less']",object
+highest_level_of_education_completed,14935,102,6,"[""Master's degree"", 'College degree', 'Some college', 'PhD', 'High School']",object
