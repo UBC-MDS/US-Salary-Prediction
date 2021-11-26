@@ -28,8 +28,6 @@ The main predictive question we wish to answer is what we can expect a person's 
 
 ## Results and Discussion
 
-
-
 ```{r fig.cap = "Figure 3", echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
 knitr::include_graphics('../results/figures/eda.png')
 ```
