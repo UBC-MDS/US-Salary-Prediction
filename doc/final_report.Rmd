@@ -18,9 +18,9 @@ The main predictive question we wish to answer is what we can expect a person's 
 
 ## Methods
 
- 
-
 The Python [@python] and R [@r] programming languages and the following Python and R packages were used to perform the data analysis and present results: Pandas [@pandas], Scikit-learn [@pedregosa2011scikit], Altair [@vanderplas2018altair], docopt [@docopt], knitr [@knitr].
+
+As references, we utilized [@jain_2017] for methodological practices regarding linear, ridge and lasso regression, as well as [@Martín2018] which recommended linear regression for problems similar to the one we are analysing. 
 
 # Results & Discussion
 ### Data 
