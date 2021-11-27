@@ -22,7 +22,7 @@ The results suggest that our model has a hard time accurately predicting the ann
 
 To visualize the effectiveness of our model, we can plot the predicted salary values against the actual salary values and compare the correlation to a 45 degree line.
 
-```{r fig.cap = "Figure 3", echo = FALSE, fig.width = 5, fig.height = 4, out.width = "100%"}
+```{r fig.cap = "Figure 3", echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
 knitr::include_graphics('../results/figures/predicted_vs_actual_chart.png')
 
 ```

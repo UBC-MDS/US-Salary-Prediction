@@ -14,9 +14,12 @@ import pandas as pd
 opt = docopt(__doc__)
 
 def main(opt):
+    # Read CSV from input URL
     url = opt["--URL"]
     filepath = opt["--filepath"]
     dataset = pd.read_csv(url)
+
+    # Save as CSV to given filepath
     dataset.to_csv(filepath, index = False)
     print("Data successfully downloaded to: " + filepath)
 
