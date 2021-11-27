@@ -1,0 +1,30 @@
+We chose a linear Ridge regression model with the alpha hyperparameter to predict annnual salary based on the given features in the dataset. To ensure that the model was not overfitting to training data, we conducted some additional data cleaning. Firstly, *annual_salary* values within the training dataset of less than 10,000 USD or over 1,000,000 USD were removed. Additionally, text values that occured less than 5 times in the *state* or *city* features were imputed with an empty string. This ensures that highly specific values will be removed which ultimately helps reduce overfitting.
+
+To score the model, we relied on the r2 and root mean squared error scores since they are simple to interpret. Since the annual salary target of the test set can be 0, MAPE would not be a suitable metric in this scenario.
+
+Hyperparameter optimization was performed on alpha with a search space spanning $10^{(-5)} - 10^{(5)}$ with 20 total iterations. The ideal alpha value which provided the highest r2 score was determined to be approximately 6.16 as seen by the results table.
+
+```{r Table 2, echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
+gridsearch_data <- read.csv('../results/tables/grid_search.csv')
+knitr::kable(data.frame(gridsearch_data))
+
+```
+
+Using this hyperparameter value, a Ridge model was fitted to the traing data and evaluated on the test data. The results can be seen in the table below.
+
+```{r Table 3, echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
+test_data <- read.csv('../results/tables/test_scores.csv')
+knitr::kable(data.frame(test_data))
+
+```
+
+The results suggest that our model has a hard time accurately predicting the annual salary targets in the test set, with a r2 value of 0.38. This suggests that we may need to further tune our model with feature engineering, or Ridge may not be a good fit for this problem.
+
+To visualize the effectiveness of our model, we can plot the predicted salary values against the actual salary values and compare the correlation to a 45 degree line.
+
+```{r fig.cap = "Figure 3", echo = FALSE, fig.width = 5, fig.height = 4, out.width = "100%"}
+knitr::include_graphics('../results/figures/predicted_vs_actual_chart.png')
+
+```
+
+The graph above suggests that the model has high variance and is affected by a large number of outliers within the 50-150 thousand range for predicted salary, which explains the poor performance of the model.

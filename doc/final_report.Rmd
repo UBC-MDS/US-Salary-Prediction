@@ -41,6 +41,9 @@ The Python [@python] and R [@r] programming languages and the following Python a
 # knitr::include_graphics('../results/figures/eda.png')
 ```
 
+```{r, child=c('model_results.Rmd')}
+```
+
 # References
 
 
