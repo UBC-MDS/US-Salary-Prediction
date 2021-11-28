@@ -11,4 +11,4 @@ python src/generate_eda.py --filepath=data/processed/train_df.csv --outfigure=re
 python src/fit_transform_evaluate_model.py --source_data=data/processed --output_dir=results
 
 # Creating Final Report
-Rscript -e "rmarkdown::render('doc/final_report.Rmd', output_format = 'html_document')"
+Rscript -e "rmarkdown::render('doc/final_report.Rmd', output_format = 'all')"
