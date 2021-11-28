@@ -3,11 +3,11 @@ title: "Final Report"
 author: "Cuthbert Chow, Rong Li, Andy Yang"
 date: "`r Sys.Date()`"
 output:
-  pdf_document:
+  github_document:
     toc: yes
   html_document:
     toc: yes
-  github_document:
+  pdf_document:
     toc: yes
 bibliography: references.bib
 ---
