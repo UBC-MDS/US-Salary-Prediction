@@ -5,11 +5,10 @@ date: "`r Sys.Date()`"
 output:
   github_document:
     toc: yes
-  pdf_document:
-    toc: yes
   html_document:
     toc: yes
-
+  pdf_document:
+    toc: yes
 bibliography: references.bib
 ---
 

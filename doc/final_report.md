@@ -52,7 +52,7 @@ et al. 2011) to perform statistical analysis.
 
 ## Results and Discussion
 
-First, we looked at the distribution of our target “Annual Salary”. As
+First, we looked at the distribution of our target “Annual Salary.” As
 shown in the graph below, it seems to be a largely right-skewed
 distribution. And the median salary is around $80,000.
 
@@ -65,15 +65,15 @@ annual salary, we first looked at a summary table about our features:
 
 | Features                                 | Not.Null.Count | Null.Count | Number.of.Unique.Values | Some.Unique.Values                                                                                                                      | Types   |
 |:-----------------------------------------|---------------:|-----------:|------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------|:--------|
-| how_old_are_you                          |          15037 |          0 |                       7 | \[‘45-54’, ‘25-34’, ‘35-44’, ‘55-64’, ‘65 or over’\]                                                                                    | object  |
-| industry                                 |          15008 |         29 |                     675 | \[‘Accounting, Banking & Finance’, ‘Engineering or Manufacturing’, ‘Education (Higher Education)’, ‘Computing or Tech’, ‘Health care’\] | object  |
-| job_title                                |          15037 |          0 |                    7970 | \[‘CPA’, ‘Sales Analyst 1’, ‘Director of Enrollment’, ‘Process Analyst’, ‘Senior Data Scientist’\]                                      | object  |
+| how_old_are_you                          |          15037 |          0 |                       7 | \[‘45-54,’ ‘25-34,’ ‘35-44,’ ‘55-64,’ ‘65 or over’\]                                                                                    | object  |
+| industry                                 |          15008 |         29 |                     675 | \[‘Accounting, Banking & Finance,’ ‘Engineering or Manufacturing,’ ‘Education (Higher Education),’ ‘Computing or Tech,’ ‘Health care’\] | object  |
+| job_title                                |          15037 |          0 |                    7970 | \[‘CPA,’ ‘Sales Analyst 1,’ ‘Director of Enrollment,’ ‘Process Analyst,’ ‘Senior Data Scientist’\]                                      | object  |
 | other_monetary_comp                      |          11282 |       3755 |                     583 | \[10000.0, 2700.0, 0.0, 5000.0, 145000.0\]                                                                                              | float64 |
-| state                                    |          14914 |        123 |                     108 | \[‘California’, ‘Pennsylvania’, ‘Colorado’, ‘Virginia’, ‘Oregon’\]                                                                      | object  |
-| city                                     |          15006 |         31 |                    2482 | \[‘Palm Springs’, ‘Pittsburgh’, ‘Fort Collins’, ‘Arlington’, ‘Boulder’\]                                                                | object  |
-| overall_years_of_professional_experience |          15037 |          0 |                       8 | \[‘21 - 30 years’, ‘11 - 20 years’, ‘8 - 10 years’, ‘2 - 4 years’, ‘5-7 years’\]                                                        | object  |
-| years_of_experience_in_field             |          15037 |          0 |                       8 | \[‘8 - 10 years’, ‘5-7 years’, ‘11 - 20 years’, ‘2 - 4 years’, ‘1 year or less’\]                                                       | object  |
-| highest_level_of_education_completed     |          14935 |        102 |                       6 | \[“Master’s degree”, ‘College degree’, ‘Some college’, ‘PhD’, ‘High School’\]                                                           | object  |
+| state                                    |          14914 |        123 |                     108 | \[‘California,’ ‘Pennsylvania,’ ‘Colorado,’ ‘Virginia,’ ‘Oregon’\]                                                                      | object  |
+| city                                     |          15006 |         31 |                    2482 | \[‘Palm Springs,’ ‘Pittsburgh,’ ‘Fort Collins,’ ‘Arlington,’ ‘Boulder’\]                                                                | object  |
+| overall_years_of_professional_experience |          15037 |          0 |                       8 | \[‘21 - 30 years,’ ‘11 - 20 years,’ ‘8 - 10 years,’ ‘2 - 4 years,’ ‘5-7 years’\]                                                        | object  |
+| years_of_experience_in_field             |          15037 |          0 |                       8 | \[‘8 - 10 years,’ ‘5-7 years,’ ‘11 - 20 years,’ ‘2 - 4 years,’ ‘1 year or less’\]                                                       | object  |
+| highest_level_of_education_completed     |          14935 |        102 |                       6 | \[“Master’s degree,” ‘College degree,’ ‘Some college,’ ‘PhD,’ ‘High School’\]                                                           | object  |
 
 Table 1 - Summary Information About Key Features
 
@@ -163,6 +163,51 @@ correlation to a 45 degree line.
 The graph above suggests that the model has high variance and is
 affected by a large number of outliers within the 50-150 thousand range
 for predicted salary, which explains the poor performance of the model.
+
+We can gain insight into how our model makes predictions by analysing
+the coefficient values associated with the regression. The tables below
+show the difference in salary that the model predicts given the change
+in the associated feature. The first Table displays the top 10 positive
+coefficients.
+
+| Feature       | Coefficient |
+|:--------------|------------:|
+| physician     |    75982.92 |
+| svp           |    63572.91 |
+| md            |    62366.08 |
+| partner       |    59051.13 |
+| psychiatrist  |    53834.40 |
+| city_Bay Area |    47099.37 |
+| equity        |    45696.35 |
+| chief         |    44228.23 |
+| machine       |    42013.78 |
+| onlyfans      |    41327.36 |
+
+Table 4 - Ten most positive coefficients
+
+The top 10 most positively correlated features with higher income are
+somewhat expected, as they mostly consist of text features which
+represent high-paying jobs, or titles such as MD. An interesting feature
+we didn’t expect was onlyfans, which is a more recent phenomena. This
+shows the effects of modern technology on methods to earn income.
+
+| Feature    | Coefficient |
+|:-----------|------------:|
+| paralegal  |   -39578.05 |
+| resident   |   -27644.94 |
+| adjunct    |   -25451.49 |
+| office     |   -24018.18 |
+| clerk      |   -21987.93 |
+| bookkeeper |   -20601.96 |
+| technician |   -19049.69 |
+| assistant  |   -18906.81 |
+| secretary  |   -18896.17 |
+| legal      |   -18892.48 |
+
+Table 5 - Ten most negative coefficients
+
+The most negative coefficient features are also somewhat expected, as
+they mostly consist of traditionally lower paying jobs in the US.
 
 # References
 
