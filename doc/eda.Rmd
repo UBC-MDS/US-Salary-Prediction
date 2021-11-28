@@ -3,7 +3,7 @@ First, we looked at the distribution of our target "Annual Salary".
 As shown in the graph below, it seems to be a largely right-skewed distribution.
 And the median salary is around \$80,000.
 
-```{r fig.cap = "Figure 1", echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
+```{r fig.cap = "Figure 1 - Distribution of Annual Salaries", echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
 knitr::include_graphics('../results/figures/eda_target_distribution.png')
 ```
 
@@ -13,7 +13,7 @@ To look at whether the features in our dataset are useful to predict annual sala
 
 ```{r Table 1, echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
 summary_data <- read.csv('../results/tables/eda_summary_table.csv')
-knitr::kable(data.frame(summary_data), caption = "Table 1")
+knitr::kable(data.frame(summary_data), caption = "Table 1 - Summary Information About Key Features")
 
 ```
 We noticed that there are lots of null values in the additional information features (additional_context_on_job_title, additional_context_on_income, etc),  and some of the variables have a lot of unique values.
@@ -22,7 +22,8 @@ Here we want to explore those variables that have < 10 unique values and check t
 
 As shown below, the higher salaries are roughly associated with the older age groups, the longer experience and the higher education, which indicates those are likely to be good predictors of our target.
 
-```{r fig.cap = "Figure 2", echo = FALSE, fig.width = 5, fig.height = 4, out.width = "100%"}
+
+```{r fig.cap = "Figure 2 - Median Salary For Various Categorial Features", echo = FALSE, fig.width = 5, fig.height = 4, out.width = "100%"}
 knitr::include_graphics('../results/figures/eda_category_distribution.png')
 ```
 

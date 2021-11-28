@@ -3,6 +3,8 @@ title: "Final Report"
 author: "Cuthbert Chow, Rong Li, Andy Yang"
 date: "`r Sys.Date()`"
 output:
+  pdf_document:
+    toc: yes
   html_document:
     toc: yes
 bibliography: references.bib
@@ -28,19 +30,12 @@ As references, we utilized [@jain_2017] for methodological practices regarding l
 ```{r, child=c('data.Rmd')}
 ```
 
-## Analysis
-
 
 ## Results and Discussion
 
 
 ```{r, child=c('eda.Rmd')}
 ```
-
-```{r fig.cap = "Figure 3", echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
-# knitr::include_graphics('../results/figures/eda.png')
-```
-
 
 
 ```{r, child=c('model_results.Rmd')}

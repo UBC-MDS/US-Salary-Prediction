@@ -6,15 +6,15 @@ Hyperparameter optimization was performed on alpha with a search space spanning 
 
 ```{r Table 2, echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
 gridsearch_data <- read.csv('../results/tables/grid_search.csv')
-knitr::kable(data.frame(gridsearch_data))
+knitr::kable(data.frame(gridsearch_data), caption = "Table 2 - R2 Scores For Various Alpha Values")
 
 ```
 
-Using this hyperparameter value, a Ridge model was fitted to the traing data and evaluated on the test data. The results can be seen in the table below.
+Using this hyperparameter value, a Ridge model was fitted to the training data and evaluated on the test data. The results can be seen in the table below.
 
 ```{r Table 3, echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
 test_data <- read.csv('../results/tables/test_scores.csv')
-knitr::kable(data.frame(test_data))
+knitr::kable(data.frame(test_data), caption = "Table 3 - Scores of Ridge Model on Test Data")
 
 ```
 
@@ -22,7 +22,7 @@ The results suggest that our model has a hard time accurately predicting the ann
 
 To visualize the effectiveness of our model, we can plot the predicted salary values against the actual salary values and compare the correlation to a 45 degree line.
 
-```{r fig.cap = "Figure 3", echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
+```{r fig.cap = "Figure 3 - Actual vs Predicted Salary Values", echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
 knitr::include_graphics('../results/figures/predicted_vs_actual_chart.png')
 
 ```
