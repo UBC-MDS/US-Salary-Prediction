@@ -35,13 +35,6 @@ def main(opt):
         x=alt.X("median(annual_salary)"),
     )
     chart.save(outfigure)
-
-    # Define a function that finds unique values for dataframe columns
-    def df_uniques(df):
-        result = {}
-        for x in df.columns:
-            result[df[x].name] = df[x].unique().tolist()[0:5]
-        return result
     
     # Save a summary table for cateforical features as csv file
     train_X = train_df.drop(columns=["annual_salary"])
@@ -54,7 +47,6 @@ def main(opt):
     result_df = pd.DataFrame(result)
     result_df.index.names = ['Features'] 
     result_df.to_csv(outcsv)
-    
 
     # Save a figure for the categorical features
     col = result_df[result_df["Number of Unique Values"] < 20]
@@ -69,10 +61,16 @@ def main(opt):
         ).repeat(
             collist,
             columns=2
-        ) 
+        )
 
     chart.save(outfigure2)
     
+def df_uniques(df):
+    """Find unique values for each dataframe columns"""
+    result = {}
+    for x in df.columns:
+        result[df[x].name] = df[x].unique().tolist()[0:5]
+    return result
 
 if __name__ == "__main__":
     main(opt)
