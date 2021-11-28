@@ -128,6 +128,12 @@ def main(opt):
     X_transformed_train = preprocessor.fit_transform(X_train)
     X_transformed_test = preprocessor.transform(X_test)
 
+    #extract feature names from pre-processor
+    feats = list(preprocessor.transformers_[0][1][1].get_feature_names_out(categorical_features)) +\
+        numeric_features + ordinal_features +\
+        list(preprocessor.transformers_[3][1].get_feature_names_out()) +\
+        list(preprocessor.transformers_[4][1].get_feature_names_out())
+
     # define scoring metrics
     score_types_reg = {
         "neg_root_mean_squared_error": "neg_root_mean_squared_error",
@@ -210,6 +216,17 @@ def main(opt):
     chart = point + line_plot
     chart.save(output_dir + "/figures/predicted_vs_actual_chart.png")
     print("saved model evaluation chart to: " + output_dir)
+
+    # create model coefficient dataframes and save them to the output directory
+    neg_coefficients_df = pd.DataFrame(data=ideal_model.coef_, index=feats, columns=["coefficient"]).sort_values("coefficient")[:10].reset_index()
+    neg_coefficients_df.columns = ["Feature", "Coefficient"]
+    pos_coefficients_df =pd.DataFrame(data=ideal_model.coef_, index=feats, columns=["coefficient"]).sort_values("coefficient", ascending = False)[:10].reset_index()
+    pos_coefficients_df.columns = ["Feature", "Coefficient"]
+    
+    neg_coefficients_df.to_csv(output_dir + '/tables/negative_coefficients.csv', index = False)
+    pos_coefficients_df.to_csv(output_dir + '/tables/positive_coefficients.csv', index = False)
+    print("saved coefficient tables to: " + output_dir)
+
 
 if __name__ == "__main__":
     main(opt)
