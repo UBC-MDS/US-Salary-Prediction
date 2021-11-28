@@ -19,22 +19,36 @@ We first did some exploratory data analysis (a complete EDA file can be found [h
 
 ## Usage
 
-To replicate the analysis conducted in this repository, ensure that all listed dependencies are installed, and the run the commands below from the command line, whilst located at the root directory of this project. ##\# Dependencies - python version 3.9.5 and Python packages: - docopt=0.6.2 - pandas=1.3.3 - scikit-learn=1.0.1 - altair=4.1.0 - altair_data_server=0.4.1 - altair_saver=0.5.0 - R version 4.1.1 and R packages: - knitr=1.33
+To replicate the analysis conducted in this repository, ensure that all listed dependencies are installed, and the run the commands below from the command line, whilst located at the root directory of this project. 
 
-    # download data
-    python src/DownloadData.py --URL=https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-05-18/survey.csv --filepath=data/raw_data.csv
+### Dependencies  
 
-    # pre-process data 
-    python src/DataProcessing.py --source_data=data/raw_data.csv --output_dir=data/processed
+- python version 3.9.5 and Python packages:  
+  - docopt=0.6.2  
+  - pandas=1.3.3  
+  - scikit-learn=1.0.1  
+  - altair=4.1.0  
+  - altair_data_server=0.4.1  
+  - altair_saver=0.5.0  
+- R version 4.1.1 and R packages:  
+  - knitr=1.33
+  
+```
+# download data
+python src/DownloadData.py --URL=https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-05-18/survey.csv --filepath=data/raw_data.csv
 
-    # Exploratory Data Analysis
-    python src/generate_eda.py --filepath=data/processed/train_df.csv --outfigure=results/figures/eda_target_distribution.png --outfigure2=results/figures/eda_category_distribution.png --outcsv=results/tables/eda_summary_table.csv
+# pre-process data 
+python src/DataProcessing.py --source_data=data/raw_data.csv --output_dir=data/processed
 
-    # Model Tuning and Fitting 
-    python src/fit_transform_evaluate_model.py --source_data=data/processed --output_dir=results
+# Exploratory Data Analysis
+python src/generate_eda.py --filepath=data/processed/train_df.csv --outfigure=results/figures/eda_target_distribution.png --outfigure2=results/figures/eda_category_distribution.png --outcsv=results/tables/eda_summary_table.csv
 
-    # Creating Final Report
-    Rscript -e "rmarkdown::render('doc/final_report.Rmd', output_format = 'html_document')"
+# Model Tuning and Fitting 
+python src/fit_transform_evaluate_model.py --source_data=data/processed --output_dir=results
+
+# Creating Final Report
+Rscript -e "rmarkdown::render('doc/final_report.Rmd', output_format = 'html_document')"
+```
 
 ## Reference
 
