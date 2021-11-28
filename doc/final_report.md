@@ -3,10 +3,22 @@ Final Report
 Cuthbert Chow, Rong Li, Andy Yang
 2021-11-27
 
+-   [Aim and Summary](#aim-and-summary)
+-   [Methods](#methods)
+-   [Results & Discussion](#results--discussion)
+    -   [Data](#data)
+    -   [Results and Discussion](#results-and-discussion)
+-   [References](#references)
+
 ## Aim and Summary
 
-The main predictive question we wish to answer is what we can expect a
-person’s salary to be in the US, given a certain professional history
+One of the most important things in the job search is about the
+salaries, specifically, does this job’s salary meet our expectations?
+However, it is not that easy to set proper expectations. Setting an
+expectation too high or too low will both be harmful to our job search.
+
+So, the main predictive question we wish to answer is what we can expect
+a person’s salary to be in the US, given a certain professional history
 (such as years of experience, industry, or age). We will use a linear
 regression model to do the prediction. In the process, we wish to
 understand which factors provide the most predictive power when trying
@@ -38,15 +50,13 @@ We used Altair (VanderPlas et al. 2018) to create figures, Pandas
 (Reback et al. 2020) to do data processing, and Scikit-learn (Pedregosa
 et al. 2011) to perform statistical analysis.
 
-## Analysis
-
 ## Results and Discussion
 
-First, we looked at the distribution of our target “Annual Salary.” As
+First, we looked at the distribution of our target “Annual Salary”. As
 shown in the graph below, it seems to be a largely right-skewed
 distribution. And the median salary is around $80,000.
 
-<img src="../results/figures/eda_target_distribution.png" title="Figure 1" alt="Figure 1" width="50%" />
+<img src="../results/figures/eda_target_distribution.png" title="Figure 1 - Distribution of Annual Salaries" alt="Figure 1 - Distribution of Annual Salaries" width="50%" />
 
 Here is some general information about our dataset:
 
@@ -55,15 +65,17 @@ annual salary, we first looked at a summary table about our features:
 
 | Features                                 | Not.Null.Count | Null.Count | Number.of.Unique.Values | Some.Unique.Values                                                                                                                      | Types   |
 |:-----------------------------------------|---------------:|-----------:|------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------|:--------|
-| how_old_are_you                          |          15037 |          0 |                       7 | \[‘45-54,’ ‘25-34,’ ‘35-44,’ ‘55-64,’ ‘65 or over’\]                                                                                    | object  |
-| industry                                 |          15008 |         29 |                     675 | \[‘Accounting, Banking & Finance,’ ‘Engineering or Manufacturing,’ ‘Education (Higher Education),’ ‘Computing or Tech,’ ‘Health care’\] | object  |
-| job_title                                |          15037 |          0 |                    7970 | \[‘CPA,’ ‘Sales Analyst 1,’ ‘Director of Enrollment,’ ‘Process Analyst,’ ‘Senior Data Scientist’\]                                      | object  |
+| how_old_are_you                          |          15037 |          0 |                       7 | \[‘45-54’, ‘25-34’, ‘35-44’, ‘55-64’, ‘65 or over’\]                                                                                    | object  |
+| industry                                 |          15008 |         29 |                     675 | \[‘Accounting, Banking & Finance’, ‘Engineering or Manufacturing’, ‘Education (Higher Education)’, ‘Computing or Tech’, ‘Health care’\] | object  |
+| job_title                                |          15037 |          0 |                    7970 | \[‘CPA’, ‘Sales Analyst 1’, ‘Director of Enrollment’, ‘Process Analyst’, ‘Senior Data Scientist’\]                                      | object  |
 | other_monetary_comp                      |          11282 |       3755 |                     583 | \[10000.0, 2700.0, 0.0, 5000.0, 145000.0\]                                                                                              | float64 |
-| state                                    |          14914 |        123 |                     108 | \[‘California,’ ‘Pennsylvania,’ ‘Colorado,’ ‘Virginia,’ ‘Oregon’\]                                                                      | object  |
-| city                                     |          15006 |         31 |                    2482 | \[‘Palm Springs,’ ‘Pittsburgh,’ ‘Fort Collins,’ ‘Arlington,’ ‘Boulder’\]                                                                | object  |
-| overall_years_of_professional_experience |          15037 |          0 |                       8 | \[‘21 - 30 years,’ ‘11 - 20 years,’ ‘8 - 10 years,’ ‘2 - 4 years,’ ‘5-7 years’\]                                                        | object  |
-| years_of_experience_in_field             |          15037 |          0 |                       8 | \[‘8 - 10 years,’ ‘5-7 years,’ ‘11 - 20 years,’ ‘2 - 4 years,’ ‘1 year or less’\]                                                       | object  |
-| highest_level_of_education_completed     |          14935 |        102 |                       6 | \[“Master’s degree,” ‘College degree,’ ‘Some college,’ ‘PhD,’ ‘High School’\]                                                           | object  |
+| state                                    |          14914 |        123 |                     108 | \[‘California’, ‘Pennsylvania’, ‘Colorado’, ‘Virginia’, ‘Oregon’\]                                                                      | object  |
+| city                                     |          15006 |         31 |                    2482 | \[‘Palm Springs’, ‘Pittsburgh’, ‘Fort Collins’, ‘Arlington’, ‘Boulder’\]                                                                | object  |
+| overall_years_of_professional_experience |          15037 |          0 |                       8 | \[‘21 - 30 years’, ‘11 - 20 years’, ‘8 - 10 years’, ‘2 - 4 years’, ‘5-7 years’\]                                                        | object  |
+| years_of_experience_in_field             |          15037 |          0 |                       8 | \[‘8 - 10 years’, ‘5-7 years’, ‘11 - 20 years’, ‘2 - 4 years’, ‘1 year or less’\]                                                       | object  |
+| highest_level_of_education_completed     |          14935 |        102 |                       6 | \[“Master’s degree”, ‘College degree’, ‘Some college’, ‘PhD’, ‘High School’\]                                                           | object  |
+
+Table 1 - Summary Information About Key Features
 
 We noticed that there are lots of null values in the additional
 information features (additional_context_on_job_title,
@@ -75,12 +87,11 @@ and check their distributions and relationships with the annual salary,
 since variables with 100s or 1000s of distinct values would be harder to
 visualize in a meaningful way.
 
-<img src="../results/figures/eda_category_distribution.png" title="Figure 2" alt="Figure 2" width="100%" />
+As shown below, the higher salaries are roughly associated with the
+older age groups, the longer experience and the higher education, which
+indicates those are likely to be good predictors of our target.
 
-As we can see in Figure 2, the higher salaries are roughly associated
-with the older age groups, the longer experience and the higher
-education, which indicates those are likely to be good predictors of our
-target.
+<img src="../results/figures/eda_category_distribution.png" title="Figure 2 - Median Salary For Various Categorial Features" alt="Figure 2 - Median Salary For Various Categorial Features" width="100%" />
 
 We chose a linear Ridge regression model with the alpha hyperparameter
 to predict annnual salary based on the given features in the dataset. To
@@ -104,35 +115,39 @@ to be approximately 6.16 as seen by the results table.
 
 |        r2 | Negative.RMSE |        alpha |
 |----------:|--------------:|-------------:|
-| 0.4928798 |     -37940.75 | 6.158482e+00 |
-| 0.4884613 |     -38105.60 | 2.069138e+01 |
-| 0.4870262 |     -38159.41 | 1.832981e+00 |
-| 0.4745929 |     -38619.62 | 5.455595e-01 |
-| 0.4709659 |     -38751.89 | 6.951928e+01 |
-| 0.4623651 |     -39066.85 | 1.623777e-01 |
-| 0.4546108 |     -39347.56 | 4.832930e-02 |
-| 0.4509319 |     -39479.61 | 1.438450e-02 |
-| 0.4500043 |     -39513.07 | 4.281300e-03 |
-| 0.4491153 |     -39544.11 | 3.793000e-04 |
-| 0.4489637 |     -39549.79 | 1.000000e-05 |
-| 0.4489223 |     -39551.54 | 3.360000e-05 |
-| 0.4487511 |     -39557.46 | 1.274300e-03 |
-| 0.4486099 |     -39562.25 | 1.129000e-04 |
-| 0.4399703 |     -39871.14 | 2.335721e+02 |
+| 0.4928878 |     -37940.46 | 6.158482e+00 |
+| 0.4884505 |     -38106.00 | 2.069138e+01 |
+| 0.4870195 |     -38159.66 | 1.832981e+00 |
+| 0.4746404 |     -38617.90 | 5.455595e-01 |
+| 0.4709605 |     -38752.08 | 6.951928e+01 |
+| 0.4622520 |     -39071.07 | 1.623777e-01 |
+| 0.4547682 |     -39342.34 | 4.832930e-02 |
+| 0.4509969 |     -39477.61 | 1.438450e-02 |
+| 0.4496944 |     -39523.69 | 4.281300e-03 |
+| 0.4495908 |     -39527.74 | 3.793000e-04 |
+| 0.4495321 |     -39529.64 | 1.274300e-03 |
+| 0.4488644 |     -39553.48 | 1.000000e-05 |
+| 0.4486738 |     -39560.46 | 1.129000e-04 |
+| 0.4486148 |     -39562.29 | 3.360000e-05 |
+| 0.4399704 |     -39871.13 | 2.335721e+02 |
 | 0.3976762 |     -41349.37 | 7.847600e+02 |
 | 0.3402341 |     -43276.44 | 2.636651e+03 |
 | 0.2562765 |     -45948.20 | 8.858668e+03 |
 | 0.1504469 |     -49107.84 | 2.976351e+04 |
 | 0.0652891 |     -51508.79 | 1.000000e+05 |
 
-Using this hyperparameter value, a Ridge model was fitted to the traing
-data and evaluated on the test data. The results can be seen in the
-table below.
+Table 2 - R2 Scores For Various Alpha Values
+
+Using this hyperparameter value, a Ridge model was fitted to the
+training data and evaluated on the test data. The results can be seen in
+the table below.
 
 | Metric |   Scores |
 |:-------|---------:|
 | R2     |     0.38 |
-| RMSE   | 48430.17 |
+| RMSE   | 48430.31 |
+
+Table 3 - Scores of Ridge Model on Test Data
 
 The results suggest that our model has a hard time accurately predicting
 the annual salary targets in the test set, with a r2 value of 0.38. This
@@ -143,7 +158,7 @@ To visualize the effectiveness of our model, we can plot the predicted
 salary values against the actual salary values and compare the
 correlation to a 45 degree line.
 
-<img src="../results/figures/predicted_vs_actual_chart.png" title="Figure 3" alt="Figure 3" width="50%" />
+<img src="../results/figures/predicted_vs_actual_chart.png" title="Figure 3 - Actual vs Predicted Salary Values" alt="Figure 3 - Actual vs Predicted Salary Values" width="50%" />
 
 The graph above suggests that the model has high variance and is
 affected by a large number of outliers within the 50-150 thousand range
