@@ -5,17 +5,17 @@ Data analysis project to predict salaries for DSCI 522 (Data Science Workflows);
 
 ## About
 
-One of the most important things in job search is about the salaries, specifically, does this job's salary meet your expectation? However, it is not that easy to set a proper expectations. Setting an expectation too high or too low will both be harmful for your job search.
+One of the most important things in the job search is about the salaries, specifically, does this job's salary meet our expectations? However, it is not that easy to set proper expectations. Setting an expectation too high or too low will both be harmful to our job search.
 
 Here, this project is to help you to answer this question: What we can expect a person's salary to be in the US?
 
-According to Martín et al. (2018), a linear regression model with R2 score is a good combination for predicting salaries, so we will use that to do the prediction. In the process, we wish to understand which factors provide the most predictive power when trying to predict a person's salary.
+According to Martín et al. (2018), a linear regression model with an R2 score is a good combination for predicting salaries, so we will use that to do the prediction. In the process, we wish to understand which factors provide the most predictive power when trying to predict a person's salary.
 
 The dataset we are analyzing comes from a salary survey from the "Ask a Manager" blog by Alison Green. This dataset contains survey data gathered from "Ask a Manager" readers working in a variety of industries, and can be found [here](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-05-18/survey.csv).
 
 ## Report
 
-We first did some exploratory data analysis (a complete EDA file can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/results/EDA.ipynb)). We noticed that most of the columns are text columns and there are lots of unique values. Therefore, we dropped some columns in our analysis and did column transformation, and we use Ridge to create a model with 0.38 R2 score. Our final report can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/doc/final_report.md).
+We first did some exploratory data analysis (a complete EDA file can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/results/EDA.ipynb)). We noticed that most of the columns are text columns and there are lots of unique values. Therefore, we dropped some columns in our analysis and did column transformation, and we use Ridge to create a model with a 0.38 R2 score. Our final report can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/doc/final_report.md).
 
 ## Usage
 
@@ -47,7 +47,7 @@ python src/generate_eda.py --filepath=data/processed/train_df.csv --outfigure=re
 python src/fit_transform_evaluate_model.py --source_data=data/processed --output_dir=results
 
 # Creating Final Report
-Rscript -e "rmarkdown::render('doc/final_report.Rmd', output_format = 'html_document')"
+Rscript -e "rmarkdown::render('doc/final_report.Rmd', output_format = 'all')"
 ```
 
 ## Reference

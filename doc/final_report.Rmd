@@ -3,10 +3,13 @@ title: "Final Report"
 author: "Cuthbert Chow, Rong Li, Andy Yang"
 date: "`r Sys.Date()`"
 output:
+  github_document:
+    toc: yes
   pdf_document:
     toc: yes
   html_document:
     toc: yes
+
 bibliography: references.bib
 ---
 
@@ -16,7 +19,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Aim and Summary
 
-The main predictive question we wish to answer is what we can expect a person's salary to be in the US, given a certain professional history (such as years of experience, industry, or age). We will use a linear regression model to do the prediction. In the process, we wish to understand which factors provide the most predictive power when trying to predict a person's salary.
+One of the most important things in the job search is about the salaries, specifically, does this job's salary meet our expectations? However, it is not that easy to set proper expectations. Setting an expectation too high or too low will both be harmful to our job search.
+
+So, the main predictive question we wish to answer is what we can expect a person's salary to be in the US, given a certain professional history (such as years of experience, industry, or age). We will use a linear regression model to do the prediction. In the process, we wish to understand which factors provide the most predictive power when trying to predict a person's salary.
 
 ## Methods
 
