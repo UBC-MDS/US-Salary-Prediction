@@ -2,7 +2,7 @@
 # date: 2021-11-25
 
 """This script splits splits the input data file .
-Usage: DataProcessing.py --source_data=<URL> --output_dir=<filepath>
+Usage: data_processing.py --source_data=<URL> --output_dir=<filepath>
 
 Options:
 --source_data=<filepath>     filepath to retrieve raw data from (this is a required option)
