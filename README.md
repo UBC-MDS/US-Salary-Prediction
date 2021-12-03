@@ -15,7 +15,7 @@ The dataset we are analyzing comes from a salary survey from the "Ask a Manager"
 
 ## Report
 
-We first did some exploratory data analysis (a complete EDA file can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/results/EDA.ipynb)). We noticed that most of the columns are text columns and there are lots of unique values. Therefore, we dropped some columns in our analysis and did column transformation, and we use Ridge to create a model with a 0.38 R2 score. Our final report can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/doc/final_report.md).
+We first did some exploratory data analysis (a complete EDA file can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/results/eda.ipynb)). We noticed that most of the columns are text columns and there are lots of unique values. Therefore, we dropped some columns in our analysis and did column transformation, and we use Ridge to create a model with a 0.38 R2 score. Our final report can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/doc/final_report.md).
 
 ## Usage
 
