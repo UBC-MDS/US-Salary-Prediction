@@ -138,9 +138,11 @@ def main(opt):
 
     X_transformed_wcoef_test = pd.DataFrame(X_transformed_test.todense(), columns = feats)
     
-    # output preprocessed test data
+    # output preprocessed test data and feature names
     x_test_sparse = scipy.sparse.csc_matrix(X_transformed_wcoef_test)
     scipy.sparse.save_npz(input_dir + '/x_test_sparse.npz', x_test_sparse)
+
+    pd.DataFrame(feats).to_csv(input_dir + '/feature_names.csv', index = False)
     y_test.to_csv(input_dir + '/y_test.csv', index = False)
     print("processed test data saved to: " + input_dir)
     
