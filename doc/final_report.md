@@ -1,7 +1,7 @@
 Final Report
 ================
 Cuthbert Chow, Rong Li, Andy Yang
-2021-11-27
+2021-12-02
 
 -   [Aim and Summary](#aim-and-summary)
 -   [Methods](#methods)
@@ -52,7 +52,7 @@ et al. 2011) to perform statistical analysis.
 
 ## Results and Discussion
 
-First, we looked at the distribution of our target “Annual Salary.” As
+First, we looked at the distribution of our target “Annual Salary”. As
 shown in the graph below, it seems to be a largely right-skewed
 distribution. And the median salary is around $80,000.
 
@@ -65,15 +65,15 @@ annual salary, we first looked at a summary table about our features:
 
 | Features                                 | Not.Null.Count | Null.Count | Number.of.Unique.Values | Some.Unique.Values                                                                                                                      | Types   |
 |:-----------------------------------------|---------------:|-----------:|------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------|:--------|
-| how_old_are_you                          |          15037 |          0 |                       7 | \[‘45-54,’ ‘25-34,’ ‘35-44,’ ‘55-64,’ ‘65 or over’\]                                                                                    | object  |
-| industry                                 |          15008 |         29 |                     675 | \[‘Accounting, Banking & Finance,’ ‘Engineering or Manufacturing,’ ‘Education (Higher Education),’ ‘Computing or Tech,’ ‘Health care’\] | object  |
-| job_title                                |          15037 |          0 |                    7970 | \[‘CPA,’ ‘Sales Analyst 1,’ ‘Director of Enrollment,’ ‘Process Analyst,’ ‘Senior Data Scientist’\]                                      | object  |
+| how_old_are_you                          |          15037 |          0 |                       7 | \[‘45-54’, ‘25-34’, ‘35-44’, ‘55-64’, ‘65 or over’\]                                                                                    | object  |
+| industry                                 |          15008 |         29 |                     675 | \[‘Accounting, Banking & Finance’, ‘Engineering or Manufacturing’, ‘Education (Higher Education)’, ‘Computing or Tech’, ‘Health care’\] | object  |
+| job_title                                |          15037 |          0 |                    7970 | \[‘CPA’, ‘Sales Analyst 1’, ‘Director of Enrollment’, ‘Process Analyst’, ‘Senior Data Scientist’\]                                      | object  |
 | other_monetary_comp                      |          11282 |       3755 |                     583 | \[10000.0, 2700.0, 0.0, 5000.0, 145000.0\]                                                                                              | float64 |
-| state                                    |          14914 |        123 |                     108 | \[‘California,’ ‘Pennsylvania,’ ‘Colorado,’ ‘Virginia,’ ‘Oregon’\]                                                                      | object  |
-| city                                     |          15006 |         31 |                    2482 | \[‘Palm Springs,’ ‘Pittsburgh,’ ‘Fort Collins,’ ‘Arlington,’ ‘Boulder’\]                                                                | object  |
-| overall_years_of_professional_experience |          15037 |          0 |                       8 | \[‘21 - 30 years,’ ‘11 - 20 years,’ ‘8 - 10 years,’ ‘2 - 4 years,’ ‘5-7 years’\]                                                        | object  |
-| years_of_experience_in_field             |          15037 |          0 |                       8 | \[‘8 - 10 years,’ ‘5-7 years,’ ‘11 - 20 years,’ ‘2 - 4 years,’ ‘1 year or less’\]                                                       | object  |
-| highest_level_of_education_completed     |          14935 |        102 |                       6 | \[“Master’s degree,” ‘College degree,’ ‘Some college,’ ‘PhD,’ ‘High School’\]                                                           | object  |
+| state                                    |          14914 |        123 |                     108 | \[‘California’, ‘Pennsylvania’, ‘Colorado’, ‘Virginia’, ‘Oregon’\]                                                                      | object  |
+| city                                     |          15006 |         31 |                    2482 | \[‘Palm Springs’, ‘Pittsburgh’, ‘Fort Collins’, ‘Arlington’, ‘Boulder’\]                                                                | object  |
+| overall_years_of_professional_experience |          15037 |          0 |                       8 | \[‘21 - 30 years’, ‘11 - 20 years’, ‘8 - 10 years’, ‘2 - 4 years’, ‘5-7 years’\]                                                        | object  |
+| years_of_experience_in_field             |          15037 |          0 |                       8 | \[‘8 - 10 years’, ‘5-7 years’, ‘11 - 20 years’, ‘2 - 4 years’, ‘1 year or less’\]                                                       | object  |
+| highest_level_of_education_completed     |          14935 |        102 |                       6 | \[“Master’s degree”, ‘College degree’, ‘Some college’, ‘PhD’, ‘High School’\]                                                           | object  |
 
 Table 1 - Summary Information About Key Features
 
@@ -115,21 +115,21 @@ to be approximately 6.16 as seen by the results table.
 
 |        r2 | Negative.RMSE |        alpha |
 |----------:|--------------:|-------------:|
-| 0.4928878 |     -37940.46 | 6.158482e+00 |
-| 0.4884505 |     -38106.00 | 2.069138e+01 |
-| 0.4870195 |     -38159.66 | 1.832981e+00 |
-| 0.4746404 |     -38617.90 | 5.455595e-01 |
-| 0.4709605 |     -38752.08 | 6.951928e+01 |
-| 0.4622520 |     -39071.07 | 1.623777e-01 |
-| 0.4547682 |     -39342.34 | 4.832930e-02 |
-| 0.4509969 |     -39477.61 | 1.438450e-02 |
-| 0.4496944 |     -39523.69 | 4.281300e-03 |
-| 0.4495908 |     -39527.74 | 3.793000e-04 |
-| 0.4495321 |     -39529.64 | 1.274300e-03 |
-| 0.4488644 |     -39553.48 | 1.000000e-05 |
-| 0.4486738 |     -39560.46 | 1.129000e-04 |
-| 0.4486148 |     -39562.29 | 3.360000e-05 |
-| 0.4399704 |     -39871.13 | 2.335721e+02 |
+| 0.4928882 |     -37940.44 | 6.158482e+00 |
+| 0.4884592 |     -38105.68 | 2.069138e+01 |
+| 0.4870711 |     -38157.79 | 1.832981e+00 |
+| 0.4746330 |     -38618.17 | 5.455595e-01 |
+| 0.4709655 |     -38751.91 | 6.951928e+01 |
+| 0.4623100 |     -39068.95 | 1.623777e-01 |
+| 0.4543844 |     -39355.45 | 4.832930e-02 |
+| 0.4510178 |     -39476.59 | 1.438450e-02 |
+| 0.4497782 |     -39520.97 | 4.281300e-03 |
+| 0.4497037 |     -39523.68 | 3.793000e-04 |
+| 0.4496205 |     -39526.74 | 3.360000e-05 |
+| 0.4489793 |     -39549.47 | 1.274300e-03 |
+| 0.4486347 |     -39561.39 | 1.129000e-04 |
+| 0.4485694 |     -39563.78 | 1.000000e-05 |
+| 0.4399719 |     -39871.08 | 2.335721e+02 |
 | 0.3976762 |     -41349.37 | 7.847600e+02 |
 | 0.3402341 |     -43276.44 | 2.636651e+03 |
 | 0.2562765 |     -45948.20 | 8.858668e+03 |
@@ -145,7 +145,7 @@ the table below.
 | Metric |   Scores |
 |:-------|---------:|
 | R2     |     0.38 |
-| RMSE   | 48430.31 |
+| RMSE   | 48426.99 |
 
 Table 3 - Scores of Ridge Model on Test Data
 
@@ -172,16 +172,16 @@ coefficients.
 
 | Feature       | Coefficient |
 |:--------------|------------:|
-| physician     |    75982.92 |
-| svp           |    63572.91 |
-| md            |    62366.08 |
-| partner       |    59051.13 |
-| psychiatrist  |    53834.40 |
-| city_Bay Area |    47099.37 |
-| equity        |    45696.35 |
-| chief         |    44228.23 |
-| machine       |    42013.78 |
-| onlyfans      |    41327.36 |
+| physician     |    76206.24 |
+| svp           |    63320.38 |
+| md            |    62835.21 |
+| partner       |    59037.64 |
+| psychiatrist  |    53953.42 |
+| city_Bay Area |    47291.79 |
+| equity        |    45701.37 |
+| chief         |    44069.79 |
+| machine       |    41956.81 |
+| onlyfans      |    41532.70 |
 
 Table 4 - Ten most positive coefficients
 
@@ -193,16 +193,16 @@ shows the effects of modern technology on methods to earn income.
 
 | Feature    | Coefficient |
 |:-----------|------------:|
-| paralegal  |   -39578.05 |
-| resident   |   -27644.94 |
-| adjunct    |   -25451.49 |
-| office     |   -24018.18 |
-| clerk      |   -21987.93 |
-| bookkeeper |   -20601.96 |
-| technician |   -19049.69 |
-| assistant  |   -18906.81 |
-| secretary  |   -18896.17 |
-| legal      |   -18892.48 |
+| paralegal  |   -39667.11 |
+| resident   |   -27505.81 |
+| adjunct    |   -25331.81 |
+| office     |   -24071.69 |
+| clerk      |   -21893.66 |
+| bookkeeper |   -20650.49 |
+| technician |   -19081.50 |
+| assistant  |   -18938.40 |
+| secretary  |   -18851.33 |
+| legal      |   -18750.03 |
 
 Table 5 - Ten most negative coefficients
 
