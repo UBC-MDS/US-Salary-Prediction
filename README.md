@@ -15,11 +15,19 @@ The dataset we are analyzing comes from a salary survey from the "Ask a Manager"
 
 ## Report
 
-We first did some exploratory data analysis (a complete EDA file can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/results/eda.ipynb)). We noticed that most of the columns are text columns and there are lots of unique values. Therefore, we dropped some columns in our analysis and did column transformation, and we use Ridge to create a model with a 0.38 R2 score. Our final report can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/doc/final_report.md).
+We first did some exploratory data analysis (a complete EDA file can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/results/EDA.ipynb)). We noticed that most of the columns are text columns and there are lots of unique values. Therefore, we dropped some columns in our analysis and did column transformation, and we use Ridge to create a model with a 0.38 R2 score. Our final report can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/doc/final_report.md).
 
 ## Usage
 
-To replicate the analysis conducted in this repository, ensure that all listed dependencies are installed, and the run the commands below from the command line, whilst located at the root directory of this project. 
+To replicate the analysis conducted in this repository, ensure that all listed dependencies are installed, and then run the following command from the command line at the root directory:
+```
+make all
+```
+
+And to reset the folders to remove the intermediate artifacts, run the following command from the root directory:
+```
+make clean
+```
 
 ### Dependencies  
 
@@ -33,22 +41,6 @@ To replicate the analysis conducted in this repository, ensure that all listed d
 - R version 4.1.1 and R packages:  
   - knitr=1.33
   
-```
-# download data
-python src/DownloadData.py --URL=https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-05-18/survey.csv --filepath=data/raw_data.csv
-
-# pre-process data 
-python src/DataProcessing.py --source_data=data/raw_data.csv --output_dir=data/processed
-
-# Exploratory Data Analysis
-python src/generate_eda.py --filepath=data/processed/train_df.csv --outfigure=results/figures/eda_target_distribution.png --outfigure2=results/figures/eda_category_distribution.png --outcsv=results/tables/eda_summary_table.csv
-
-# Model Tuning and Fitting 
-python src/fit_transform_evaluate_model.py --source_data=data/processed --output_dir=results
-
-# Creating Final Report
-Rscript -e "rmarkdown::render('doc/final_report.Rmd', output_format = 'all')"
-```
 
 ## Reference
 
