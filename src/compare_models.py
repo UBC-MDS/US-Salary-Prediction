@@ -1,8 +1,8 @@
 # author: Andy Yang
 # date: 2021-11-27
 
-"""This script transforms the cleaned data and fits a Ridge model to the preprocessed train data. 
-
+"""This script imports preprocessed test data and fitted Ridge and RandomForestRegressor models. 
+It then evaluates them on the test set and outputs evaluation metrics to the output directory.
 
 Usage: fit_model.py --source_data=<filepath> --output_dir=<filepath>
 
