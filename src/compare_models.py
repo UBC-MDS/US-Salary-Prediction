@@ -82,7 +82,6 @@ def main(opt):
     scores = {
         "Metric": ["R2", "RMSE"],
         "Ridge Scores": [r2_ridge, rmse],
-        "Random Forest Scores": [r2_rf, rmse_rf]
     }
     
     test_scores = pd.DataFrame(scores)
@@ -92,17 +91,13 @@ def main(opt):
     # Plot the predicted values against true values, then save the graph in the output directory
     y_data = {
         "Ridge precitions": y_pred_ridge,
-        "Random Forest predictions": y_pred_rf,
         "y_actual": y_test.iloc[:, 0]
     }
     salary_data = pd.DataFrame(y_data)
-    salary_data = salary_data.melt(value_vars = ["Ridge precitions", "Random Forest predictions"], id_vars = "y_actual")
 
-
-    point = alt.Chart(salary_data, title='Ridge and Random Forest regression effectiveness in predicting salary values').mark_circle(opacity = 0.3).encode(
-        alt.X("value", title="Predicted Salary"),
-        alt.Y('y_actual', title="Actual Salary"),
-        color = "variable"
+    point = alt.Chart(salary_data, title='Ridge regression effectiveness in predicting salary values').mark_circle(opacity = 0.5).encode(
+        alt.X("y_actual", title="Actual Salary"),
+        alt.Y("Ridge precitions", title="Predicted Salary")
     )
 
     line = pd.DataFrame({

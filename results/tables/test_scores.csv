@@ -1,3 +1,3 @@
-Metric,Ridge Scores,Random Forest Scores
-R2,0.38,0.35
-RMSE,48398.05,49353.18
+Metric,Ridge Scores
+R2,0.38
+RMSE,48398.05
