@@ -1,11 +1,11 @@
 Significance Rank,Ridge Feature,Ridge Coefficient,Random Forest Feature,RandomForest Coefficient
-1,physician,74365.2034,other_monetary_comp,0.2654
-2,svp,63705.5235,years_of_experience_in_field,0.0597
-3,md,62124.6589,highest_level_of_education_completed,0.0525
-4,partner,58462.5659,computing,0.0467
-5,psychiatrist,53442.2859,overall_years_of_professional_experience,0.0171
-6,city_Bay Area,46930.7417,how_old_are_you,0.0143
-7,equity,45417.1964,senior,0.0137
-8,chief,43911.4283,state_California,0.0132
-9,machine,41834.9693,director,0.0118
-10,onlyfans,41535.8775,software,0.0108
+1,physician,74365.2034,other_monetary_comp,0.2688
+2,svp,63705.5235,years_of_experience_in_field,0.0624
+3,md,62124.6589,highest_level_of_education_completed,0.0519
+4,partner,58462.5659,computing,0.0501
+5,psychiatrist,53442.2859,overall_years_of_professional_experience,0.017
+6,city_Bay Area,46930.7417,how_old_are_you,0.0135
+7,equity,45417.1964,state_California,0.012
+8,chief,43911.4283,senior,0.0118
+9,machine,41834.9693,director,0.0115
+10,onlyfans,41535.8775,education,0.0107

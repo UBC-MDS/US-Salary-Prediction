@@ -1,13 +1,16 @@
 Final Report
 ================
 Cuthbert Chow, Rong Li, Andy Yang
-2021-12-02
+2021-12-03
 
 -   [Aim and Summary](#aim-and-summary)
--   [Methods](#methods)
--   [Results & Discussion](#results--discussion)
-    -   [Data](#data)
-    -   [Results and Discussion](#results-and-discussion)
+-   [Data & Method](#data--method)
+-   [Analysis](#analysis)
+    -   [Data Exploration](#data-exploration)
+    -   [Data cleaning](#data-cleaning)
+    -   [Find the best model](#find-the-best-model)
+    -   [Results & Discussion](#results--discussion)
+    -   [Important Features](#important-features)
 -   [References](#references)
 
 ## Aim and Summary
@@ -17,14 +20,42 @@ salaries, specifically, does this job’s salary meet our expectations?
 However, it is not that easy to set proper expectations. Setting an
 expectation too high or too low will both be harmful to our job search.
 
-So, the main predictive question we wish to answer is what we can expect
-a person’s salary to be in the US, given a certain professional history
-(such as years of experience, industry, or age). We will use a linear
-regression model to do the prediction. In the process, we wish to
-understand which factors provide the most predictive power when trying
-to predict a person’s salary.
+Here, this project is to help you to answer this question: What we can
+expect a person’s salary to be in the US?
 
-## Methods
+To answer this question, we use two different regression models to do
+the prediction task. The first model we choose is a linear regression
+model. According to Martín et al. (2018), a linear regression model is a
+good model for predicting salaries. The second one we choose is the
+random forest regression model, because of its good nature (i.e., robust
+to outliers, low bias, etc.)(Kho 2019). We score the model using r2 and
+root mean squared error (RMSE), and it turns out that after
+hyperparameter optimization, the ridge (which is a linear regressor with
+regularization) is performing a little bit better than the random forest
+regressor. On the unseen test data set, our best linear regression model
+has an r2 score of 0.38 and RMSE of 48398.05.
+
+To further understand which factors provide the most predictive power
+when trying to predict a person’s salary, we present some important
+features with the highest/lowest coefficients of the linear regression
+model and some important features with the highest feature importance of
+the random forest model. We noticed that although the most important
+features are not very similar for the two models, they are both
+understandable and somewhat expected.
+
+## Data & Method
+
+The dataset we are analysing comes from a salary survey from the “Ask a
+Manager” blog by Alison Green. This dataset contains survey data
+gathered from “Ask a Manager” readers working in a variety of industries
+(Green 2021).
+
+As references, we utilized the guide for methodological practices
+regarding linear, ridge and lasso regression(Jain 2017), as well as the
+article from Martín et al. (2018) which recommended linear regression
+for problems similar to the one we are analysing.  
+We also select the random forest regression model according to Kho
+(2019).
 
 The Python (Van Rossum and Drake 2009) and R (R Core Team 2021)
 programming languages and the following Python and R packages were used
@@ -32,27 +63,11 @@ to perform the data analysis and present results: Pandas (Reback et al.
 2020), Scikit-learn (Pedregosa et al. 2011), Altair (VanderPlas et al.
 2018), docopt (Keleshev 2014), knitr (Xie 2021).
 
-As references, we utilized (Jain 2017) for methodological practices
-regarding linear, ridge and lasso regression, as well as (Martín et al.
-2018) which recommended linear regression for problems similar to the
-one we are analysing.
+## Analysis
 
-# Results & Discussion
+### Data Exploration
 
-### Data
-
-The dataset we are analysing comes from a salary survey from the “Ask a
-Manager” blog by Alison Green. This dataset contains survey data
-gathered from “Ask a Manager” readers working in a variety of
-industries. (Green 2021)
-
-We used Altair (VanderPlas et al. 2018) to create figures, Pandas
-(Reback et al. 2020) to do data processing, and Scikit-learn (Pedregosa
-et al. 2011) to perform statistical analysis.
-
-## Results and Discussion
-
-First, we looked at the distribution of our target “Annual Salary”. As
+First, we looked at the distribution of our target “Annual Salary.” As
 shown in the graph below, it seems to be a largely right-skewed
 distribution. And the median salary is around $80,000.
 
@@ -65,149 +80,216 @@ annual salary, we first looked at a summary table about our features:
 
 | Features                                 | Not.Null.Count | Null.Count | Number.of.Unique.Values | Some.Unique.Values                                                                                                                      | Types   |
 |:-----------------------------------------|---------------:|-----------:|------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------|:--------|
-| how_old_are_you                          |          15037 |          0 |                       7 | \[‘45-54’, ‘25-34’, ‘35-44’, ‘55-64’, ‘65 or over’\]                                                                                    | object  |
-| industry                                 |          15008 |         29 |                     675 | \[‘Accounting, Banking & Finance’, ‘Engineering or Manufacturing’, ‘Education (Higher Education)’, ‘Computing or Tech’, ‘Health care’\] | object  |
-| job_title                                |          15037 |          0 |                    7970 | \[‘CPA’, ‘Sales Analyst 1’, ‘Director of Enrollment’, ‘Process Analyst’, ‘Senior Data Scientist’\]                                      | object  |
+| how_old_are_you                          |          15037 |          0 |                       7 | \[‘45-54,’ ‘25-34,’ ‘35-44,’ ‘55-64,’ ‘65 or over’\]                                                                                    | object  |
+| industry                                 |          15008 |         29 |                     675 | \[‘Accounting, Banking & Finance,’ ‘Engineering or Manufacturing,’ ‘Education (Higher Education),’ ‘Computing or Tech,’ ‘Health care’\] | object  |
+| job_title                                |          15037 |          0 |                    7970 | \[‘CPA,’ ‘Sales Analyst 1,’ ‘Director of Enrollment,’ ‘Process Analyst,’ ‘Senior Data Scientist’\]                                      | object  |
 | other_monetary_comp                      |          11282 |       3755 |                     583 | \[10000.0, 2700.0, 0.0, 5000.0, 145000.0\]                                                                                              | float64 |
-| state                                    |          14914 |        123 |                     108 | \[‘California’, ‘Pennsylvania’, ‘Colorado’, ‘Virginia’, ‘Oregon’\]                                                                      | object  |
-| city                                     |          15006 |         31 |                    2482 | \[‘Palm Springs’, ‘Pittsburgh’, ‘Fort Collins’, ‘Arlington’, ‘Boulder’\]                                                                | object  |
-| overall_years_of_professional_experience |          15037 |          0 |                       8 | \[‘21 - 30 years’, ‘11 - 20 years’, ‘8 - 10 years’, ‘2 - 4 years’, ‘5-7 years’\]                                                        | object  |
-| years_of_experience_in_field             |          15037 |          0 |                       8 | \[‘8 - 10 years’, ‘5-7 years’, ‘11 - 20 years’, ‘2 - 4 years’, ‘1 year or less’\]                                                       | object  |
-| highest_level_of_education_completed     |          14935 |        102 |                       6 | \[“Master’s degree”, ‘College degree’, ‘Some college’, ‘PhD’, ‘High School’\]                                                           | object  |
+| state                                    |          14914 |        123 |                     108 | \[‘California,’ ‘Pennsylvania,’ ‘Colorado,’ ‘Virginia,’ ‘Oregon’\]                                                                      | object  |
+| city                                     |          15006 |         31 |                    2482 | \[‘Palm Springs,’ ‘Pittsburgh,’ ‘Fort Collins,’ ‘Arlington,’ ‘Boulder’\]                                                                | object  |
+| overall_years_of_professional_experience |          15037 |          0 |                       8 | \[‘21 - 30 years,’ ‘11 - 20 years,’ ‘8 - 10 years,’ ‘2 - 4 years,’ ‘5-7 years’\]                                                        | object  |
+| years_of_experience_in_field             |          15037 |          0 |                       8 | \[‘8 - 10 years,’ ‘5-7 years,’ ‘11 - 20 years,’ ‘2 - 4 years,’ ‘1 year or less’\]                                                       | object  |
+| highest_level_of_education_completed     |          14935 |        102 |                       6 | \[“Master’s degree,” ‘College degree,’ ‘Some college,’ ‘PhD,’ ‘High School’\]                                                           | object  |
 
 Table 1 - Summary Information About Key Features
 
 We noticed that there are lots of null values in the additional
 information features (additional_context_on_job_title,
 additional_context_on_income, etc), and some of the variables have a lot
-of unique values.
+of unique values. Therefore, later we dropped the two additional
+information features and used the bag-of-words model to extract features
+from text columns such as industry and job title.
 
-Here we want to explore those variables that have \< 10 unique values
-and check their distributions and relationships with the annual salary,
-since variables with 100s or 1000s of distinct values would be harder to
-visualize in a meaningful way.
+Since variables with 100s or 1000s of distinct values would be harder to
+visualize in a meaningful way, here we are exploring those variables
+that have \< 10 unique values and check their distributions and
+relationships with the annual salary,
 
-As shown below, the higher salaries are roughly associated with the
+<img src="../results/figures/eda_category_distribution.png" title="Figure 2 - Salary For Various Categorial Features" alt="Figure 2 - Salary For Various Categorial Features" width="100%" />
+
+As shown above, the higher salaries are roughly associated with the
 older age groups, the longer experience and the higher education, which
 indicates those are likely to be good predictors of our target.
 
-<img src="../results/figures/eda_category_distribution.png" title="Figure 2 - Median Salary For Various Categorial Features" alt="Figure 2 - Median Salary For Various Categorial Features" width="100%" />
+### Data cleaning
 
-We chose a linear Ridge regression model with the alpha hyperparameter
-to predict annnual salary based on the given features in the dataset. To
-ensure that the model was not overfitting to training data, we conducted
-some additional data cleaning. Firstly, *annual_salary* values within
-the training dataset of less than 10,000 USD or over 1,000,000 USD were
-removed. Additionally, text values that occured less than 5 times in the
-*state* or *city* features were imputed with an empty string. This
-ensures that highly specific values will be removed which ultimately
-helps reduce overfitting.
+We chose two different types of models to predict annual salary based on
+the given features in the dataset. A linear model, Ridge, and an
+ensemble model, RandomForestRegressor. To ensure that the models were
+not overfitting to training data, we conducted some additional data
+cleaning. Firstly, *annual_salary* values within the training dataset of
+less than 10,000 USD or over 1,000,000 USD were removed. Additionally,
+text values that occurred less than 5 times in the *state* or *city*
+features were imputed with an empty string. This ensures that highly
+specific values will be removed which ultimately helps reduce
+overfitting.
 
-To score the model, we relied on the r2 and root mean squared error
+### Find the best model
+
+To score the models, we relied on the r2 and root mean squared error
 scores since they are simple to interpret. Since the annual salary
 target of the test set can be 0, MAPE would not be a suitable metric in
-this scenario.
+this scenario. We did not filter the test dataset to allow for MAPE
+scoring since this would bias the test set against evaluation data.
 
-Hyperparameter optimization was performed on alpha with a search space
+Hyperparameter optimization was performed on the Ridge and Random Forest
+models. For Ridge, the alpha parameter was optimized with a search space
 spanning 10<sup>(−5)</sup> − 10<sup>(5)</sup> with 20 total iterations.
 The ideal alpha value which provided the highest r2 score was determined
 to be approximately 6.16 as seen by the results table.
 
 |        r2 | Negative.RMSE |        alpha |
 |----------:|--------------:|-------------:|
-| 0.4928882 |     -37940.44 | 6.158482e+00 |
-| 0.4884592 |     -38105.68 | 2.069138e+01 |
-| 0.4870711 |     -38157.79 | 1.832981e+00 |
-| 0.4746330 |     -38618.17 | 5.455595e-01 |
-| 0.4709655 |     -38751.91 | 6.951928e+01 |
-| 0.4623100 |     -39068.95 | 1.623777e-01 |
-| 0.4543844 |     -39355.45 | 4.832930e-02 |
-| 0.4510178 |     -39476.59 | 1.438450e-02 |
-| 0.4497782 |     -39520.97 | 4.281300e-03 |
-| 0.4497037 |     -39523.68 | 3.793000e-04 |
-| 0.4496205 |     -39526.74 | 3.360000e-05 |
-| 0.4489793 |     -39549.47 | 1.274300e-03 |
-| 0.4486347 |     -39561.39 | 1.129000e-04 |
-| 0.4485694 |     -39563.78 | 1.000000e-05 |
-| 0.4399719 |     -39871.08 | 2.335721e+02 |
-| 0.3976762 |     -41349.37 | 7.847600e+02 |
-| 0.3402341 |     -43276.44 | 2.636651e+03 |
-| 0.2562765 |     -45948.20 | 8.858668e+03 |
-| 0.1504469 |     -49107.84 | 2.976351e+04 |
-| 0.0652891 |     -51508.79 | 1.000000e+05 |
+| 0.4952119 |     -37852.22 | 6.158482e+00 |
+| 0.4910222 |     -38008.79 | 2.069138e+01 |
+| 0.4892869 |     -38074.17 | 1.832981e+00 |
+| 0.4768824 |     -38534.29 | 5.455595e-01 |
+| 0.4740377 |     -38637.83 | 6.951928e+01 |
+| 0.4644786 |     -38988.93 | 1.623777e-01 |
+| 0.4574375 |     -39244.52 | 4.832930e-02 |
+| 0.4530491 |     -39402.67 | 1.438450e-02 |
+| 0.4521830 |     -39433.41 | 4.281300e-03 |
+| 0.4520209 |     -39439.30 | 1.129000e-04 |
+| 0.4517050 |     -39450.73 | 1.274300e-03 |
+| 0.4514334 |     -39460.59 | 1.000000e-05 |
+| 0.4513467 |     -39463.21 | 3.793000e-04 |
+| 0.4509927 |     -39475.57 | 3.360000e-05 |
+| 0.4439409 |     -39728.05 | 2.335721e+02 |
+| 0.4026841 |     -41175.61 | 7.847600e+02 |
+| 0.3457046 |     -43095.39 | 2.636651e+03 |
+| 0.2605887 |     -45814.10 | 8.858668e+03 |
+| 0.1527303 |     -49041.58 | 2.976351e+04 |
+| 0.0661657 |     -51484.57 | 1.000000e+05 |
 
-Table 2 - R2 Scores For Various Alpha Values
+Table 2.1 - R2 Scores For Various Alpha Values
 
-Using this hyperparameter value, a Ridge model was fitted to the
-training data and evaluated on the test data. The results can be seen in
-the table below.
+For Random Forest Regressor, we optimized the n_estimators for speed. We
+searched for performance increases within the hyperparameters of 10, 20,
+50, and 100 trees. We picked the 50 tree regressor for time savings,
+since the 100 tree regressor provided very little performance boost
+compared to processing time required.
 
-| Metric |   Scores |
-|:-------|---------:|
-| R2     |     0.38 |
-| RMSE   | 48426.99 |
+|   test.r2 |  train.r2 | Negative.RMSE | n_estimators |
+|----------:|----------:|--------------:|-------------:|
+| 0.4586719 | 0.9250913 |     -39205.68 |          100 |
+| 0.4543887 | 0.9217410 |     -39358.31 |           50 |
+| 0.4377983 | 0.8979579 |     -39947.49 |           10 |
+| 0.4341157 | 0.9156897 |     -40083.68 |           20 |
+
+Table 2.2 - R2 Scores For Various Alpha Values
+
+By comparing the two models’ cross-validation scores above, We
+ultimately selected the Ridge model with the alpha value around 6.16, as
+it provided better results on both r2 and root mean squared error.
+
+### Results & Discussion
+
+Here, we evaluated the best model we found on the test data. The results
+can be seen in the table below.
+
+| Metric | Ridge.Scores |
+|:-------|-------------:|
+| R2     |         0.38 |
+| RMSE   |     48398.05 |
 
 Table 3 - Scores of Ridge Model on Test Data
 
-The results suggest that our model has a hard time accurately predicting
-the annual salary targets in the test set, with a r2 value of 0.38. This
-suggests that we may need to further tune our model with feature
-engineering, or Ridge may not be a good fit for this problem.
+<!-- **COMMENT ABOUT THE RESULTS** -->
 
-To visualize the effectiveness of our model, we can plot the predicted
+As we can see, the test score is a bit different from the validation
+score, suggesting there might be a lot of variance within the data set.
+
+To visualize the effectiveness of our models, we can plot the predicted
 salary values against the actual salary values and compare the
 correlation to a 45 degree line.
 
 <img src="../results/figures/predicted_vs_actual_chart.png" title="Figure 3 - Actual vs Predicted Salary Values" alt="Figure 3 - Actual vs Predicted Salary Values" width="50%" />
 
-The graph above suggests that the model has high variance and is
-affected by a large number of outliers within the 50-150 thousand range
-for predicted salary, which explains the poor performance of the model.
+<!-- **COMMENT ON THE GRAPH AND HOW THE MODELS PERFORMED** -->
+
+Overall, the model provides an acceptable estimate within the range of 0
+to 200,000. However, it performs poorly when trying to predict higher
+values (>500,000) and thus could be improved upon in future updates.
+
+### Important Features
 
 We can gain insight into how our model makes predictions by analysing
 the coefficient values associated with the regression. The tables below
 show the difference in salary that the model predicts given the change
-in the associated feature. The first Table displays the top 10 positive
-coefficients.
+in the associated feature for the Ridge model. The first table displays
+the top 10 positive coefficients.
 
 | Feature       | Coefficient |
 |:--------------|------------:|
-| physician     |    76206.24 |
-| svp           |    63320.38 |
-| md            |    62835.21 |
-| partner       |    59037.64 |
-| psychiatrist  |    53953.42 |
-| city_Bay Area |    47291.79 |
-| equity        |    45701.37 |
-| chief         |    44069.79 |
-| machine       |    41956.81 |
-| onlyfans      |    41532.70 |
+| physician     |    74365.20 |
+| svp           |    63705.52 |
+| md            |    62124.66 |
+| partner       |    58462.57 |
+| psychiatrist  |    53442.29 |
+| city_Bay Area |    46930.74 |
+| equity        |    45417.20 |
+| chief         |    43911.43 |
+| machine       |    41834.97 |
+| onlyfans      |    41535.88 |
 
-Table 4 - Ten most positive coefficients
+Table 4.1 - Ten most positive coefficients
 
 The top 10 most positively correlated features with higher income are
-somewhat expected, as they mostly consist of text features which
+somewhat expected, as they mostly consist of text features that
 represent high-paying jobs, or titles such as MD. An interesting feature
-we didn’t expect was onlyfans, which is a more recent phenomena. This
+we didn’t expect was onlyfans, which is a more recent phenomenon. This
 shows the effects of modern technology on methods to earn income.
 
-| Feature    | Coefficient |
-|:-----------|------------:|
-| paralegal  |   -39667.11 |
-| resident   |   -27505.81 |
-| adjunct    |   -25331.81 |
-| office     |   -24071.69 |
-| clerk      |   -21893.66 |
-| bookkeeper |   -20650.49 |
-| technician |   -19081.50 |
-| assistant  |   -18938.40 |
-| secretary  |   -18851.33 |
-| legal      |   -18750.03 |
+| Feature          | Coefficient |
+|:-----------------|------------:|
+| paralegal        |   -38455.38 |
+| resident         |   -28025.23 |
+| adjunct          |   -24879.49 |
+| office           |   -23444.43 |
+| clerk            |   -21626.92 |
+| bookkeeper       |   -20094.96 |
+| assistant        |   -18433.97 |
+| city_Tallahassee |   -18425.08 |
+| legal            |   -18365.62 |
+| secretary        |   -18257.95 |
 
-Table 5 - Ten most negative coefficients
+Table 4.2 - Ten most negative coefficients
 
 The most negative coefficient features are also somewhat expected, as
-they mostly consist of traditionally lower paying jobs in the US.
+they mostly consist of traditionally lower-paying jobs in the US.
+
+<!-- **INSERT DESCRIPTION ABOUT COMPARING RIDGE TO RANDOMFOREST** -->
+
+The top 10 most important features in the random forest model are also
+presented below. We can see the differences between the two models are
+huge - the most important features are not overlapping between the two
+models. However, when we tried to interpret the result we found both are
+understandable. For example, “senior” and “director” are getting high
+feature importance in the random forest model.
+
+| Significance.Rank | Ridge.Feature | Ridge.Coefficient | Random.Forest.Feature                    | RandomForest.Coefficient |
+|------------------:|:--------------|------------------:|:-----------------------------------------|-------------------------:|
+|                 1 | physician     |          74365.20 | other_monetary_comp                      |                   0.2688 |
+|                 2 | svp           |          63705.52 | years_of_experience_in_field             |                   0.0624 |
+|                 3 | md            |          62124.66 | highest_level_of_education_completed     |                   0.0519 |
+|                 4 | partner       |          58462.57 | computing                                |                   0.0501 |
+|                 5 | psychiatrist  |          53442.29 | overall_years_of_professional_experience |                   0.0170 |
+|                 6 | city_Bay Area |          46930.74 | how_old_are_you                          |                   0.0135 |
+|                 7 | equity        |          45417.20 | state_California                         |                   0.0120 |
+|                 8 | chief         |          43911.43 | senior                                   |                   0.0118 |
+|                 9 | machine       |          41834.97 | director                                 |                   0.0115 |
+|                10 | onlyfans      |          41535.88 | education                                |                   0.0107 |
+
+Table 5 - Feature importance comparison
+
+<!-- **(include some text about random forest coefficient values being incomparable between the two)** -->
+
+Note that the feature importance value is incomparable between the two
+models since the random forest model is not linear.
+
+<!-- **COMMENT ON RESULTS** -->
+
+Overall, job title seems to influence a lot when we tried to predict
+salaries in the US. City name seems also to play a role there.
 
 # References
 
@@ -232,6 +314,14 @@ and Lasso Regression in Python and r.” *Analytics Vidhya*.
 
 Keleshev, Vladimir. 2014. *Docopt: Command-Line Interface Description
 Language*. <https://github.com/docopt/docopt>.
+
+</div>
+
+<div id="ref-kho_2019" class="csl-entry">
+
+Kho, Julia. 2019. “Why Random Forest Is My Favorite Machine Learning
+Model.” *Medium*. Towards Data Science.
+<https://towardsdatascience.com/why-random-forest-is-my-favorite-machine-learning-model-b97651fa3706>.
 
 </div>
 
