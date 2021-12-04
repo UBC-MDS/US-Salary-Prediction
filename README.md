@@ -33,12 +33,12 @@ And to reset the folders to remove the intermediate artifacts, run the following
 
 -   python version 3.9.5 and Python packages:
 
-    -   docopt=0.6.2\
-    -   pandas=1.3.3\
-    -   scikit-learn=1.0.1\
-    -   altair=4.1.0\
-    -   altair_data_server=0.4.1\
-    -   altair_saver=0.5.0\
+    -   docopt=0.6.2
+    -   pandas=1.3.3
+    -   scikit-learn=1.0.1
+    -   altair=4.1.0
+    -   altair_data_server=0.4.1
+    -   altair_saver=0.5.0
 
 -   R version 4.1.1 and R packages:
 
