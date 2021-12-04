@@ -9,8 +9,8 @@ Cuthbert Chow, Rong Li, Andy Yang
     -   [Data Exploration](#data-exploration)
     -   [Data cleaning](#data-cleaning)
     -   [Find the best model](#find-the-best-model)
-    -   [Results & Discussion](#results--discussion)
     -   [Important Features](#important-features)
+    -   [Results & Discussion](#results--discussion)
 -   [References](#references)
 
 ## Aim and Summary
@@ -67,7 +67,7 @@ to perform the data analysis and present results: Pandas (Reback et al.
 
 ### Data Exploration
 
-First, we looked at the distribution of our target “Annual Salary.” As
+First, we looked at the distribution of our target “Annual Salary”. As
 shown in the graph below, it seems to be a largely right-skewed
 distribution. And the median salary is around $80,000.
 
@@ -80,15 +80,15 @@ annual salary, we first looked at a summary table about our features:
 
 | Features                                 | Not.Null.Count | Null.Count | Number.of.Unique.Values | Some.Unique.Values                                                                                                                      | Types   |
 |:-----------------------------------------|---------------:|-----------:|------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------|:--------|
-| how_old_are_you                          |          15037 |          0 |                       7 | \[‘45-54,’ ‘25-34,’ ‘35-44,’ ‘55-64,’ ‘65 or over’\]                                                                                    | object  |
-| industry                                 |          15008 |         29 |                     675 | \[‘Accounting, Banking & Finance,’ ‘Engineering or Manufacturing,’ ‘Education (Higher Education),’ ‘Computing or Tech,’ ‘Health care’\] | object  |
-| job_title                                |          15037 |          0 |                    7970 | \[‘CPA,’ ‘Sales Analyst 1,’ ‘Director of Enrollment,’ ‘Process Analyst,’ ‘Senior Data Scientist’\]                                      | object  |
+| how_old_are_you                          |          15037 |          0 |                       7 | \[‘45-54’, ‘25-34’, ‘35-44’, ‘55-64’, ‘65 or over’\]                                                                                    | object  |
+| industry                                 |          15008 |         29 |                     675 | \[‘Accounting, Banking & Finance’, ‘Engineering or Manufacturing’, ‘Education (Higher Education)’, ‘Computing or Tech’, ‘Health care’\] | object  |
+| job_title                                |          15037 |          0 |                    7970 | \[‘CPA’, ‘Sales Analyst 1’, ‘Director of Enrollment’, ‘Process Analyst’, ‘Senior Data Scientist’\]                                      | object  |
 | other_monetary_comp                      |          11282 |       3755 |                     583 | \[10000.0, 2700.0, 0.0, 5000.0, 145000.0\]                                                                                              | float64 |
-| state                                    |          14914 |        123 |                     108 | \[‘California,’ ‘Pennsylvania,’ ‘Colorado,’ ‘Virginia,’ ‘Oregon’\]                                                                      | object  |
-| city                                     |          15006 |         31 |                    2482 | \[‘Palm Springs,’ ‘Pittsburgh,’ ‘Fort Collins,’ ‘Arlington,’ ‘Boulder’\]                                                                | object  |
-| overall_years_of_professional_experience |          15037 |          0 |                       8 | \[‘21 - 30 years,’ ‘11 - 20 years,’ ‘8 - 10 years,’ ‘2 - 4 years,’ ‘5-7 years’\]                                                        | object  |
-| years_of_experience_in_field             |          15037 |          0 |                       8 | \[‘8 - 10 years,’ ‘5-7 years,’ ‘11 - 20 years,’ ‘2 - 4 years,’ ‘1 year or less’\]                                                       | object  |
-| highest_level_of_education_completed     |          14935 |        102 |                       6 | \[“Master’s degree,” ‘College degree,’ ‘Some college,’ ‘PhD,’ ‘High School’\]                                                           | object  |
+| state                                    |          14914 |        123 |                     108 | \[‘California’, ‘Pennsylvania’, ‘Colorado’, ‘Virginia’, ‘Oregon’\]                                                                      | object  |
+| city                                     |          15006 |         31 |                    2482 | \[‘Palm Springs’, ‘Pittsburgh’, ‘Fort Collins’, ‘Arlington’, ‘Boulder’\]                                                                | object  |
+| overall_years_of_professional_experience |          15037 |          0 |                       8 | \[‘21 - 30 years’, ‘11 - 20 years’, ‘8 - 10 years’, ‘2 - 4 years’, ‘5-7 years’\]                                                        | object  |
+| years_of_experience_in_field             |          15037 |          0 |                       8 | \[‘8 - 10 years’, ‘5-7 years’, ‘11 - 20 years’, ‘2 - 4 years’, ‘1 year or less’\]                                                       | object  |
+| highest_level_of_education_completed     |          14935 |        102 |                       6 | \[“Master’s degree”, ‘College degree’, ‘Some college’, ‘PhD’, ‘High School’\]                                                           | object  |
 
 Table 1 - Summary Information About Key Features
 
@@ -160,7 +160,7 @@ to be approximately 6.16 as seen by the results table.
 | 0.1527303 |     -49041.58 | 2.976351e+04 |
 | 0.0661657 |     -51484.57 | 1.000000e+05 |
 
-Table 2.1 - R2 Scores For Various Alpha Values
+Table 2.1 - Scores For Various Alpha Values
 
 For Random Forest Regressor, we optimized the n_estimators for speed. We
 searched for performance increases within the hyperparameters of 10, 20,
@@ -175,40 +175,11 @@ compared to processing time required.
 | 0.4377983 | 0.8979579 |     -39947.49 |           10 |
 | 0.4341157 | 0.9156897 |     -40083.68 |           20 |
 
-Table 2.2 - R2 Scores For Various Alpha Values
+Table 2.2 - Scores For Various n_estimators
 
 By comparing the two models’ cross-validation scores above, We
 ultimately selected the Ridge model with the alpha value around 6.16, as
 it provided better results on both r2 and root mean squared error.
-
-### Results & Discussion
-
-Here, we evaluated the best model we found on the test data. The results
-can be seen in the table below.
-
-| Metric | Ridge.Scores |
-|:-------|-------------:|
-| R2     |         0.38 |
-| RMSE   |     48398.05 |
-
-Table 3 - Scores of Ridge Model on Test Data
-
-<!-- **COMMENT ABOUT THE RESULTS** -->
-
-As we can see, the test score is a bit different from the validation
-score, suggesting there might be a lot of variance within the data set.
-
-To visualize the effectiveness of our models, we can plot the predicted
-salary values against the actual salary values and compare the
-correlation to a 45 degree line.
-
-<img src="../results/figures/predicted_vs_actual_chart.png" title="Figure 3 - Actual vs Predicted Salary Values" alt="Figure 3 - Actual vs Predicted Salary Values" width="50%" />
-
-<!-- **COMMENT ON THE GRAPH AND HOW THE MODELS PERFORMED** -->
-
-Overall, the model provides an acceptable estimate within the range of 0
-to 200,000. However, it performs poorly when trying to predict higher
-values (>500,000) and thus could be improved upon in future updates.
 
 ### Important Features
 
@@ -231,7 +202,7 @@ the top 10 positive coefficients.
 | machine       |    41834.97 |
 | onlyfans      |    41535.88 |
 
-Table 4.1 - Ten most positive coefficients
+Table 3.1 - Ten most positive coefficients
 
 The top 10 most positively correlated features with higher income are
 somewhat expected, as they mostly consist of text features that
@@ -252,19 +223,20 @@ shows the effects of modern technology on methods to earn income.
 | legal            |   -18365.62 |
 | secretary        |   -18257.95 |
 
-Table 4.2 - Ten most negative coefficients
+Table 3.2 - Ten most negative coefficients
 
 The most negative coefficient features are also somewhat expected, as
 they mostly consist of traditionally lower-paying jobs in the US.
 
 <!-- **INSERT DESCRIPTION ABOUT COMPARING RIDGE TO RANDOMFOREST** -->
 
-The top 10 most important features in the random forest model are also
-presented below. We can see the differences between the two models are
-huge - the most important features are not overlapping between the two
-models. However, when we tried to interpret the result we found both are
-understandable. For example, “senior” and “director” are getting high
-feature importance in the random forest model.
+The top 10 positive features from Ridge and the top 10 most important
+features from the random forest model are presented below. We can see
+the differences between the two models are huge - the most important
+features are not overlapping between the two models. However, when we
+tried to interpret the result we found both are understandable. For
+example, “senior” and “director” are getting high feature importance in
+the random forest model.
 
 | Significance.Rank | Ridge.Feature | Ridge.Coefficient | Random.Forest.Feature                    | RandomForest.Coefficient |
 |------------------:|:--------------|------------------:|:-----------------------------------------|-------------------------:|
@@ -279,7 +251,7 @@ feature importance in the random forest model.
 |                 9 | machine       |          41834.97 | director                                 |                   0.0115 |
 |                10 | onlyfans      |          41535.88 | education                                |                   0.0107 |
 
-Table 5 - Feature importance comparison
+Table 4 - Feature importance comparison
 
 <!-- **(include some text about random forest coefficient values being incomparable between the two)** -->
 
@@ -291,7 +263,38 @@ models since the random forest model is not linear.
 Overall, job title seems to influence a lot when we tried to predict
 salaries in the US. City name seems also to play a role there.
 
-# References
+### Results & Discussion
+
+Here, we evaluated the best model we found (the Ridge model with the
+alpha value around 6.16) on the test data. The results can be seen in
+the table below.
+
+| Metric | Ridge.Scores |
+|:-------|-------------:|
+| R2     |         0.38 |
+| RMSE   |     48398.05 |
+
+Table 5 - Scores of Ridge Model on Test Data
+
+<!-- **COMMENT ABOUT THE RESULTS** -->
+
+As we can see, the test score is a bit different from the validation
+score, suggesting there might be a lot of variance within the data set.
+
+To visualize the effectiveness of our models, we can plot the predicted
+salary values against the actual salary values and compare the
+correlation to a 45 degree line.
+
+<img src="../results/figures/predicted_vs_actual_chart.png" title="Figure 3 - Actual vs Predicted Salary Values" alt="Figure 3 - Actual vs Predicted Salary Values" width="50%" />
+
+<!-- **COMMENT ON THE GRAPH AND HOW THE MODELS PERFORMED** -->
+
+Overall, the model provides an acceptable estimate within the range of 0
+to 200,000. However, it performs poorly when trying to predict higher
+values (>500,000). Therefore, in future updates, we might be able to
+improve our results using non-linear models.
+
+## References
 
 <div id="refs" class="references csl-bib-body hanging-indent">
 

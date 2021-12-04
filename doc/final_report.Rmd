@@ -52,6 +52,6 @@ The Python [@python] and R [@r] programming languages and the following Python a
 ```{r, child=c('model_results.Rmd')}
 ```
 
-# References
+## References
 
 
