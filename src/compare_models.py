@@ -61,9 +61,7 @@ def main(opt):
     X_transformed_test_sparse = scipy.sparse.load_npz(input_dir + '/x_test_sparse.npz')
     X_transformed_test = pd.DataFrame.sparse.from_spmatrix(X_transformed_test_sparse)
     y_test = pd.read_csv(input_dir + '/y_test.csv')
-
-    # extract feature names
-    feats = X_transformed_test.columns
+    feats = pd.read_csv(input_dir + '/feature_names.csv').iloc[:,0]
 
     # load models from pickle files
     print("loading fitted models..")
@@ -101,7 +99,7 @@ def main(opt):
     salary_data = salary_data.melt(value_vars = ["Ridge precitions", "Random Forest predictions"], id_vars = "y_actual")
 
 
-    point = alt.Chart(salary_data, title='Ridge regression effectiveness in predicting salary values').mark_circle(opacity = 0.3).encode(
+    point = alt.Chart(salary_data, title='Ridge and Random Forest regression effectiveness in predicting salary values').mark_circle(opacity = 0.3).encode(
         alt.X("value", title="Predicted Salary"),
         alt.Y('y_actual', title="Actual Salary"),
         color = "variable"
