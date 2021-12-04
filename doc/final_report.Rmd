@@ -20,31 +20,38 @@ knitr::opts_chunk$set(echo = TRUE)
 
 One of the most important things in the job search is about the salaries, specifically, does this job's salary meet our expectations? However, it is not that easy to set proper expectations. Setting an expectation too high or too low will both be harmful to our job search.
 
-So, the main predictive question we wish to answer is what we can expect a person's salary to be in the US, given a certain professional history (such as years of experience, industry, or age). We will use a linear regression model to do the prediction. In the process, we wish to understand which factors provide the most predictive power when trying to predict a person's salary.
+Here, this project is to help you to answer this question: What we can expect a person's salary to be in the US?
 
-## Methods
+To answer this question, we use two different regression models to do the prediction task. The first model we choose is a linear regression model. 
+According to Martín et al. (2018), a linear regression model is a good model for predicting salaries. 
+The second one we choose is the random forest regression model, because of its good nature (i.e., robust to outliers, low bias, etc.)(Kho 2019). 
+We score the model using r2 and root mean squared error (RMSE), and it turns out that after hyperparameter optimization, the ridge (which is a linear regressor with regularization) is performing a little bit better than the random forest regressor.
+On the unseen test data set, our best linear regression model has an r2 score of 0.38 and RMSE of 48398.05.
 
-The Python [@python] and R [@r] programming languages and the following Python and R packages were used to perform the data analysis and present results: Pandas [@reback2020pandas], Scikit-learn [@pedregosa2011scikit], Altair [@vanderplas2018altair], docopt [@docopt], knitr [@knitr].
+To further understand which factors provide the most predictive power when trying to predict a person's salary, we present some important features with the highest/lowest coefficients of the linear regression model and some important features with the highest feature importance of the random forest model. We noticed that although the most important features are not very similar for the two models, they are both understandable and somewhat expected.
 
-As references, we utilized [@jain_2017] for methodological practices regarding linear, ridge and lasso regression, as well as [@Martín2018] which recommended linear regression for problems similar to the one we are analysing. 
 
-# Results & Discussion
-### Data 
+## Data & Method
 
 ```{r, child=c('data.Rmd')}
 ```
 
+As references, we utilized the guide for methodological practices regarding linear, ridge and lasso regression[@jain_2017], as well as the article from @Martín2018 which recommended linear regression for problems similar to the one we are analysing.  
+We also select the random forest regression model according to @kho_2019.
 
-## Results and Discussion
+The Python [@python] and R [@r] programming languages and the following Python and R packages were used to perform the data analysis and present results: Pandas [@reback2020pandas], Scikit-learn [@pedregosa2011scikit], Altair [@vanderplas2018altair], docopt [@docopt], knitr [@knitr].
 
+## Analysis
+### Data Exploration
 
 ```{r, child=c('eda.Rmd')}
 ```
 
 
+
 ```{r, child=c('model_results.Rmd')}
 ```
 
-# References
+## References
 
 

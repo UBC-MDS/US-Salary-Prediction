@@ -1,3 +1,1 @@
-The dataset we are analysing comes from a salary survey from the "Ask a Manager" blog by Alison Green. This dataset contains survey data gathered from "Ask a Manager" readers working in a variety of industries. [@green_2021]
-
-We used Altair [@vanderplas2018altair] to create figures, Pandas [@reback2020pandas] to do data processing, and Scikit-learn [@pedregosa2011scikit] to perform statistical analysis. 
+The dataset we are analysing comes from a salary survey from the "Ask a Manager" blog by Alison Green. This dataset contains survey data gathered from "Ask a Manager" readers working in a variety of industries [@green_2021].
