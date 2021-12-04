@@ -28,6 +28,7 @@ results/tables/test_scores.csv results/tables/negative_coefficients_ridge.csv re
 doc/final_report.md: doc/final_report.Rmd results/figures/eda_category_distribution.png results/figures/eda_target_distribution.png results/tables/negative_coefficients_ridge.csv results/tables/positive_coefficients_ridge.csv results/tables/test_scores.csv results/tables/eda_summary_table.csv  results/tables/grid_search_ridge.csv results/tables/grid_search_ridge.csv results/tables/coefficient_comparison.csv results/figures/predicted_vs_actual_chart.png
 	Rscript -e "rmarkdown::render('doc/final_report.Rmd', output_format = 'all')"
 
+# Removal of artifact files (figures, data, models, outpur reports)
 clean:
 	rm -rf data/raw_data.csv data/processed/train_df.csv data/processed/test_df.csv data/processed/x_test_sparse.npx data/processed/y_test.csv
 	rm -rf results/tables/grid_search_ridge.csv results/tables/grid_search_rf.csv results/tables/negative_coefficients_ridge.csv results/tables/positive_coefficients_ridge.csv results/tables/test_scores.csv results/tables/eda_summary_table.csv

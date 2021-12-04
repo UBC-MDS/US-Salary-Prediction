@@ -1,7 +1,9 @@
 ### Data cleaning
+
 We chose two different types of models to predict annual salary based on the given features in the dataset. A linear model, Ridge, and an ensemble model, RandomForestRegressor. To ensure that the models were not overfitting to training data, we conducted some additional data cleaning. Firstly, *annual_salary* values within the training dataset of less than 10,000 USD or over 1,000,000 USD were removed. Additionally, text values that occurred less than 5 times in the *state* or *city* features were imputed with an empty string. This ensures that highly specific values will be removed which ultimately helps reduce overfitting.
 
 ### Find the best model
+
 To score the models, we relied on the r2 and root mean squared error scores since they are simple to interpret. Since the annual salary target of the test set can be 0, MAPE would not be a suitable metric in this scenario. We did not filter the test dataset to allow for MAPE scoring since this would bias the test set against evaluation data.
 
 Hyperparameter optimization was performed on the Ridge and Random Forest models. For Ridge, the alpha parameter was optimized with a search space spanning $10^{(-5)} - 10^{(5)}$ with 20 total iterations. The ideal alpha value which provided the highest r2 score was determined to be approximately 6.16 as seen by the results table.
@@ -11,6 +13,7 @@ gridsearch_data <- read.csv('../results/tables/grid_search_ridge.csv')
 knitr::kable(data.frame(gridsearch_data), caption = "Table 2.1 - Scores For Various Alpha Values")
 
 ```
+
 For Random Forest Regressor, we optimized the n_estimators for speed. We searched for performance increases within the hyperparameters of 10, 20, 50, and 100 trees. We picked the 50 tree regressor for time savings, since the 100 tree regressor provided very little performance boost compared to processing time required.
 
 ```{r Table 2.2, echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
@@ -19,9 +22,10 @@ knitr::kable(data.frame(gridsearch_data), caption = "Table 2.2 - Scores For Vari
 
 ```
 
-By comparing the two models' cross-validation scores above, We ultimately selected the Ridge model with the alpha value around 6.16, as it provided better results on both r2 and root mean squared error. 
+By comparing the two models' cross-validation scores above, We ultimately selected the Ridge model with the alpha value around 6.16, as it provided better results on both r2 and root mean squared error.
 
 ### Important Features
+
 We can gain insight into how our model makes predictions by analysing the coefficient values associated with the regression. The tables below show the difference in salary that the model predicts given the change in the associated feature for the Ridge model. The first table displays the top 10 positive coefficients.
 
 ```{r Table 3.1, echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
@@ -29,6 +33,7 @@ pos_coef <- read.csv('../results/tables/positive_coefficients_ridge.csv')
 knitr::kable(data.frame(pos_coef), caption = "Table 3.1 - Ten most positive coefficients")
 
 ```
+
 The top 10 most positively correlated features with higher income are somewhat expected, as they mostly consist of text features that represent high-paying jobs, or titles such as MD. An interesting feature we didn't expect was onlyfans, which is a more recent phenomenon. This shows the effects of modern technology on methods to earn income.
 
 ```{r Table 3.2, echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
@@ -37,12 +42,10 @@ neg_coef <- read.csv('../results/tables/negative_coefficients_ridge.csv')
 knitr::kable(data.frame(neg_coef), caption = "Table 3.2 - Ten most negative coefficients")
 
 ```
-The most negative coefficient features are also somewhat expected, as they mostly consist of traditionally lower-paying jobs in the US. 
 
-<!-- **INSERT DESCRIPTION ABOUT COMPARING RIDGE TO RANDOMFOREST** -->
+The most negative coefficient features are also somewhat expected, as they mostly consist of traditionally lower-paying jobs in the US.
 
 The top 10 positive features from Ridge and the top 10 most important features from the random forest model are presented below. We can see the differences between the two models are huge - the most important features are not overlapping between the two models. However, when we tried to interpret the result we found both are understandable. For example, "senior" and "director" are getting high feature importance in the random forest model.
-
 
 ```{r Table 4, echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
 
@@ -50,14 +53,13 @@ neg_coef <- read.csv('../results/tables/coefficient_comparison.csv')
 knitr::kable(data.frame(neg_coef), caption = "Table 4 - Feature importance comparison")
 
 ```
-<!-- **(include some text about random forest coefficient values being incomparable between the two)** -->
-Note that the feature importance value is incomparable between the two models since the random forest model is not linear.
 
-<!-- **COMMENT ON RESULTS** -->
+Note that the feature importance value is incomparable between the two models since the random forest model is not linear, and cannot be interpreted in the same way as the coefficients for the ridge. Nonetheless, viewing the coefficients can still inform us about the specific features which each model deems to be the most important.
 
 Overall, job title seems to influence a lot when we tried to predict salaries in the US. City name seems also to play a role there.
 
 ### Results & Discussion
+
 Here, we evaluated the best model we found (the Ridge model with the alpha value around 6.16) on the test data. The results can be seen in the table below.
 
 ```{r Table 5, echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
@@ -66,8 +68,6 @@ knitr::kable(data.frame(test_data), caption = "Table 5 - Scores of Ridge Model o
 
 ```
 
-
-<!-- **COMMENT ABOUT THE RESULTS** -->
 As we can see, the test score is a bit different from the validation score, suggesting there might be a lot of variance within the data set.
 
 To visualize the effectiveness of our models, we can plot the predicted salary values against the actual salary values and compare the correlation to a 45 degree line.
@@ -77,6 +77,4 @@ knitr::include_graphics('../results/figures/predicted_vs_actual_chart.png')
 
 ```
 
-<!-- **COMMENT ON THE GRAPH AND HOW THE MODELS PERFORMED** -->
 Overall, the model provides an acceptable estimate within the range of 0 to 200,000. However, it performs poorly when trying to predict higher values (>500,000). Therefore, in future updates, we might be able to improve our results using non-linear models.
-
