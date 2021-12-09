@@ -1,3 +1,5 @@
+# Authors: Cuthbert Chow, Rong Li, Andy Yang
+
 FROM jupyter/r-notebook
 
 RUN conda install --yes docopt=0.6.*  \
