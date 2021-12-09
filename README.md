@@ -21,7 +21,18 @@ We first did some exploratory data analysis (a complete EDA file can be found [h
 
 ## Usage
 
-To replicate the analysis conducted in this repository, ensure that all listed dependencies are installed, and then run the following command from the command line at the root directory:
+### With Docker
+
+To run analysis:
+
+    docker run --rm -p 8888:8888 -v $(pwd):/home/jovyan/work/US-Salary-Prediction cuthchow/us-salary-prediction make -C /home/jovyan/work/US-Salary-Prediction all
+
+To clear files:
+
+    docker run --rm -p 8888:8888 -v $(pwd):/home/jovyan/work/US-Salary-Prediction cuthchow/us-salary-prediction make -C /home/jovyan/work/US-Salary-Prediction clean
+
+### Without Docker
+To replicate the analysis conducted in this repository, ensure that all listed dependencies are installed locally, and then run the following command from the command line at the root directory:
 
     make all
 
