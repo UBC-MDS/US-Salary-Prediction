@@ -17,26 +17,29 @@ The dataset we are analyzing comes from a salary survey from the "Ask a Manager"
 
 ## Report
 
-We first did some exploratory data analysis (a complete EDA file can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/results/EDA.ipynb)). We noticed that most of the columns are text columns and there are lots of unique values. Therefore, we dropped some columns in our analysis and did column transformation, and we use Ridge to create a model with a 0.38 R2 score. Our final report can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/doc/final_report.md).
+<!--- I don't think we need this part: We first did some exploratory data analysis (a complete EDA file can be found [here](https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/results/EDA.ipynb)). We noticed that most of the columns are text columns and there are lots of unique values. Therefore, we dropped some columns in our analysis and did column transformation, and we use Ridge to create a model with a 0.38 R2 score. --->
+
+Our final report can be viewed [here](https://htmlpreview.github.io/?https://github.com/UBC-MDS/US-Salary-Prediction/blob/main/doc/final_report.html).
 
 ## Usage
 
 ### With Docker
 
-To run analysis:
+To replicate the analysis conducted in this repository with Docker, clone this repository, and then run the following command from the command line at the root directory of this repository. Please ensure the path doesn't include a space character, and if you are using Windows OS please replace the `$(pwd)` with `/$(pwd)`. Note that the whole process will take around 5 minutes:
 
-    docker run --rm -p 8888:8888 -v $(pwd):/home/jovyan/work/US-Salary-Prediction cuthchow/us-salary-prediction make -C /home/jovyan/work/US-Salary-Prediction all
+    docker run --rm -p 8888:8888 -v $(pwd)://home/jovyan/work cuthchow/us-salary-prediction make -C //home/jovyan/work all
 
-To clear files:
+To reset the folders with no intermediate artifacts and reports, run the following command in the command line/terminal from the root directory:
 
-    docker run --rm -p 8888:8888 -v $(pwd):/home/jovyan/work/US-Salary-Prediction cuthchow/us-salary-prediction make -C /home/jovyan/work/US-Salary-Prediction clean
+    docker run --rm -p 8888:8888 -v $(pwd)://home/jovyan/work cuthchow/us-salary-prediction make -C //home/jovyan/work clean
 
 ### Without Docker
-To replicate the analysis conducted in this repository, ensure that all listed dependencies are installed locally, and then run the following command from the command line at the root directory:
+
+To replicate the analysis conducted in this repository without Docker, ensure that all listed dependencies are installed locally, and then clone this repository and run the following command from the command line at the root directory of this repository. Note that the whole process will take around 5 minutes:
 
     make all
 
-And to reset the folders to remove the intermediate artifacts, run the following command in the command line/terminal from the root directory:
+To reset the folders with no intermediate artifacts and reports, run the following command in the command line/terminal from the root directory:
 
     make clean
 
@@ -54,6 +57,10 @@ And to reset the folders to remove the intermediate artifacts, run the following
 -   R version 4.1.1 and R packages:
 
     -   knitr=1.33
+
+### Dependency diagram of the Makefile
+
+![](Makefile.png)
 
 ## Reference
 

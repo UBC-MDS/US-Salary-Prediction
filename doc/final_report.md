@@ -1,7 +1,7 @@
 Final Report
 ================
 Cuthbert Chow, Rong Li, Andy Yang
-2021-12-03
+2021-12-10
 
 -   [Aim and Summary](#aim-and-summary)
 -   [Data & Method](#data--method)
@@ -67,7 +67,7 @@ to perform the data analysis and present results: Pandas (Reback et al.
 
 ### Data Exploration
 
-First, we looked at the distribution of our target “Annual Salary”. As
+First, we looked at the distribution of our target “Annual Salary.” As
 shown in the graph below, it seems to be a largely right-skewed
 distribution. And the median salary is around $80,000.
 
@@ -78,17 +78,17 @@ Here is some general information about our dataset:
 To look at whether the features in our dataset are useful to predict
 annual salary, we first looked at a summary table about our features:
 
-| Features                                 | Not.Null.Count | Null.Count | Number.of.Unique.Values | Some.Unique.Values                                                                                                                      | Types   |
-|:-----------------------------------------|---------------:|-----------:|------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------|:--------|
-| how_old_are_you                          |          15037 |          0 |                       7 | \[‘45-54’, ‘25-34’, ‘35-44’, ‘55-64’, ‘65 or over’\]                                                                                    | object  |
-| industry                                 |          15008 |         29 |                     675 | \[‘Accounting, Banking & Finance’, ‘Engineering or Manufacturing’, ‘Education (Higher Education)’, ‘Computing or Tech’, ‘Health care’\] | object  |
-| job_title                                |          15037 |          0 |                    7970 | \[‘CPA’, ‘Sales Analyst 1’, ‘Director of Enrollment’, ‘Process Analyst’, ‘Senior Data Scientist’\]                                      | object  |
-| other_monetary_comp                      |          11282 |       3755 |                     583 | \[10000.0, 2700.0, 0.0, 5000.0, 145000.0\]                                                                                              | float64 |
-| state                                    |          14914 |        123 |                     108 | \[‘California’, ‘Pennsylvania’, ‘Colorado’, ‘Virginia’, ‘Oregon’\]                                                                      | object  |
-| city                                     |          15006 |         31 |                    2482 | \[‘Palm Springs’, ‘Pittsburgh’, ‘Fort Collins’, ‘Arlington’, ‘Boulder’\]                                                                | object  |
-| overall_years_of_professional_experience |          15037 |          0 |                       8 | \[‘21 - 30 years’, ‘11 - 20 years’, ‘8 - 10 years’, ‘2 - 4 years’, ‘5-7 years’\]                                                        | object  |
-| years_of_experience_in_field             |          15037 |          0 |                       8 | \[‘8 - 10 years’, ‘5-7 years’, ‘11 - 20 years’, ‘2 - 4 years’, ‘1 year or less’\]                                                       | object  |
-| highest_level_of_education_completed     |          14935 |        102 |                       6 | \[“Master’s degree”, ‘College degree’, ‘Some college’, ‘PhD’, ‘High School’\]                                                           | object  |
+| Features                                 | Not.Null.Count | Null.Count | Number.of.Unique.Values | Types   |
+|:-----------------------------------------|---------------:|-----------:|------------------------:|:--------|
+| how_old_are_you                          |          15037 |          0 |                       7 | object  |
+| industry                                 |          15008 |         29 |                     675 | object  |
+| job_title                                |          15037 |          0 |                    7970 | object  |
+| other_monetary_comp                      |          11282 |       3755 |                     583 | float64 |
+| state                                    |          14914 |        123 |                     108 | object  |
+| city                                     |          15006 |         31 |                    2482 | object  |
+| overall_years_of_professional_experience |          15037 |          0 |                       8 | object  |
+| years_of_experience_in_field             |          15037 |          0 |                       8 | object  |
+| highest_level_of_education_completed     |          14935 |        102 |                       6 | object  |
 
 Table 1 - Summary Information About Key Features
 
@@ -139,21 +139,21 @@ to be approximately 6.16 as seen by the results table.
 
 |        r2 | Negative.RMSE |        alpha |
 |----------:|--------------:|-------------:|
-| 0.4952119 |     -37852.22 | 6.158482e+00 |
-| 0.4910222 |     -38008.79 | 2.069138e+01 |
-| 0.4892869 |     -38074.17 | 1.832981e+00 |
-| 0.4768824 |     -38534.29 | 5.455595e-01 |
-| 0.4740377 |     -38637.83 | 6.951928e+01 |
-| 0.4644786 |     -38988.93 | 1.623777e-01 |
-| 0.4574375 |     -39244.52 | 4.832930e-02 |
-| 0.4530491 |     -39402.67 | 1.438450e-02 |
-| 0.4521830 |     -39433.41 | 4.281300e-03 |
-| 0.4520209 |     -39439.30 | 1.129000e-04 |
-| 0.4517050 |     -39450.73 | 1.274300e-03 |
-| 0.4514334 |     -39460.59 | 1.000000e-05 |
-| 0.4513467 |     -39463.21 | 3.793000e-04 |
-| 0.4509927 |     -39475.57 | 3.360000e-05 |
-| 0.4439409 |     -39728.05 | 2.335721e+02 |
+| 0.4952179 |     -37852.02 | 6.158482e+00 |
+| 0.4910140 |     -38009.13 | 2.069138e+01 |
+| 0.4892775 |     -38074.54 | 1.832981e+00 |
+| 0.4768487 |     -38535.54 | 5.455595e-01 |
+| 0.4740495 |     -38637.41 | 6.951928e+01 |
+| 0.4647394 |     -38979.44 | 1.623777e-01 |
+| 0.4572101 |     -39252.72 | 4.832930e-02 |
+| 0.4538497 |     -39373.37 | 1.438450e-02 |
+| 0.4523925 |     -39426.25 | 3.793000e-04 |
+| 0.4520337 |     -39439.02 | 4.281300e-03 |
+| 0.4513788 |     -39461.73 | 1.129000e-04 |
+| 0.4512609 |     -39465.70 | 1.000000e-05 |
+| 0.4512501 |     -39466.43 | 3.360000e-05 |
+| 0.4512336 |     -39467.41 | 1.274300e-03 |
+| 0.4439331 |     -39728.32 | 2.335721e+02 |
 | 0.4026841 |     -41175.61 | 7.847600e+02 |
 | 0.3457046 |     -43095.39 | 2.636651e+03 |
 | 0.2605887 |     -45814.10 | 8.858668e+03 |
@@ -170,10 +170,10 @@ compared to processing time required.
 
 |   test.r2 |  train.r2 | Negative.RMSE | n_estimators |
 |----------:|----------:|--------------:|-------------:|
-| 0.4586719 | 0.9250913 |     -39205.68 |          100 |
-| 0.4543887 | 0.9217410 |     -39358.31 |           50 |
-| 0.4377983 | 0.8979579 |     -39947.49 |           10 |
-| 0.4341157 | 0.9156897 |     -40083.68 |           20 |
+| 0.4591470 | 0.9239460 |     -39190.14 |          100 |
+| 0.4563118 | 0.9223765 |     -39287.73 |           50 |
+| 0.4471095 | 0.9198172 |     -39623.05 |           20 |
+| 0.4274123 | 0.8997630 |     -40295.92 |           10 |
 
 Table 2.2 - Scores For Various n_estimators
 
@@ -191,16 +191,16 @@ the top 10 positive coefficients.
 
 | Feature       | Coefficient |
 |:--------------|------------:|
-| physician     |    74365.20 |
-| svp           |    63705.52 |
-| md            |    62124.66 |
-| partner       |    58462.57 |
-| psychiatrist  |    53442.29 |
-| city_Bay Area |    46930.74 |
-| equity        |    45417.20 |
-| chief         |    43911.43 |
-| machine       |    41834.97 |
-| onlyfans      |    41535.88 |
+| physician     |    74378.06 |
+| svp           |    63693.00 |
+| md            |    62148.93 |
+| partner       |    58460.39 |
+| psychiatrist  |    53449.05 |
+| city_Bay Area |    46940.70 |
+| equity        |    45417.85 |
+| chief         |    43903.58 |
+| machine       |    41832.51 |
+| onlyfans      |    41546.77 |
 
 Table 3.1 - Ten most positive coefficients
 
@@ -212,23 +212,21 @@ shows the effects of modern technology on methods to earn income.
 
 | Feature          | Coefficient |
 |:-----------------|------------:|
-| paralegal        |   -38455.38 |
-| resident         |   -28025.23 |
-| adjunct          |   -24879.49 |
-| office           |   -23444.43 |
-| clerk            |   -21626.92 |
-| bookkeeper       |   -20094.96 |
-| assistant        |   -18433.97 |
-| city_Tallahassee |   -18425.08 |
-| legal            |   -18365.62 |
-| secretary        |   -18257.95 |
+| paralegal        |   -38459.81 |
+| resident         |   -28017.91 |
+| adjunct          |   -24873.13 |
+| office           |   -23446.57 |
+| clerk            |   -21622.61 |
+| bookkeeper       |   -20096.76 |
+| assistant        |   -18435.04 |
+| city_Tallahassee |   -18421.47 |
+| legal            |   -18358.64 |
+| secretary        |   -18255.88 |
 
 Table 3.2 - Ten most negative coefficients
 
 The most negative coefficient features are also somewhat expected, as
 they mostly consist of traditionally lower-paying jobs in the US.
-
-<!-- **INSERT DESCRIPTION ABOUT COMPARING RIDGE TO RANDOMFOREST** -->
 
 The top 10 positive features from Ridge and the top 10 most important
 features from the random forest model are presented below. We can see
@@ -240,25 +238,24 @@ the random forest model.
 
 | Significance.Rank | Ridge.Feature | Ridge.Coefficient | Random.Forest.Feature                    | RandomForest.Coefficient |
 |------------------:|:--------------|------------------:|:-----------------------------------------|-------------------------:|
-|                 1 | physician     |          74365.20 | other_monetary_comp                      |                   0.2688 |
-|                 2 | svp           |          63705.52 | years_of_experience_in_field             |                   0.0624 |
-|                 3 | md            |          62124.66 | highest_level_of_education_completed     |                   0.0519 |
-|                 4 | partner       |          58462.57 | computing                                |                   0.0501 |
-|                 5 | psychiatrist  |          53442.29 | overall_years_of_professional_experience |                   0.0170 |
-|                 6 | city_Bay Area |          46930.74 | how_old_are_you                          |                   0.0135 |
-|                 7 | equity        |          45417.20 | state_California                         |                   0.0120 |
-|                 8 | chief         |          43911.43 | senior                                   |                   0.0118 |
-|                 9 | machine       |          41834.97 | director                                 |                   0.0115 |
-|                10 | onlyfans      |          41535.88 | education                                |                   0.0107 |
+|                 1 | physician     |          74378.06 | other_monetary_comp                      |                   0.2626 |
+|                 2 | svp           |          63693.00 | years_of_experience_in_field             |                   0.0616 |
+|                 3 | md            |          62148.93 | highest_level_of_education_completed     |                   0.0530 |
+|                 4 | partner       |          58460.39 | computing                                |                   0.0489 |
+|                 5 | psychiatrist  |          53449.05 | overall_years_of_professional_experience |                   0.0193 |
+|                 6 | city_Bay Area |          46940.70 | how_old_are_you                          |                   0.0140 |
+|                 7 | equity        |          45417.85 | state_California                         |                   0.0134 |
+|                 8 | chief         |          43903.58 | senior                                   |                   0.0121 |
+|                 9 | machine       |          41832.51 | partner                                  |                   0.0121 |
+|                10 | onlyfans      |          41546.77 | director                                 |                   0.0117 |
 
 Table 4 - Feature importance comparison
 
-<!-- **(include some text about random forest coefficient values being incomparable between the two)** -->
-
 Note that the feature importance value is incomparable between the two
-models since the random forest model is not linear.
-
-<!-- **COMMENT ON RESULTS** -->
+models since the random forest model is not linear, and cannot be
+interpreted in the same way as the coefficients for the ridge.
+Nonetheless, viewing the coefficients can still inform us about the
+specific features which each model deems to be the most important.
 
 Overall, job title seems to influence a lot when we tried to predict
 salaries in the US. City name seems also to play a role there.
@@ -272,14 +269,14 @@ the table below.
 | Metric | Ridge.Scores |
 |:-------|-------------:|
 | R2     |         0.38 |
-| RMSE   |     48398.05 |
+| RMSE   |     48398.03 |
 
 Table 5 - Scores of Ridge Model on Test Data
 
-<!-- **COMMENT ABOUT THE RESULTS** -->
-
-As we can see, the test score is a bit different from the validation
-score, suggesting there might be a lot of variance within the data set.
+As we can see, the R2 score is 0.38, suggesting that 38% of the variance
+can be explained by our model. The test score is a bit different from
+the validation score, so there might be a lot of variance within the
+data set.
 
 To visualize the effectiveness of our models, we can plot the predicted
 salary values against the actual salary values and compare the
@@ -287,12 +284,17 @@ correlation to a 45 degree line.
 
 <img src="../results/figures/predicted_vs_actual_chart.png" title="Figure 3 - Actual vs Predicted Salary Values" alt="Figure 3 - Actual vs Predicted Salary Values" width="50%" />
 
-<!-- **COMMENT ON THE GRAPH AND HOW THE MODELS PERFORMED** -->
-
 Overall, the model provides an acceptable estimate within the range of 0
 to 200,000. However, it performs poorly when trying to predict higher
-values (>500,000). Therefore, in future updates, we might be able to
-improve our results using non-linear models.
+values (>500,000). There seems to be a trend of underestimating higher
+values.
+
+So, several things could be done to further improve this model in
+future. First of all, doing some feature engineering might help us get a
+better model, such as including some polynomial terms. Also, we might be
+able to solve the problem of extreme values using different
+regularization/loss functions. Additionally, we can consider using some
+other tree-based ensemble models.
 
 ## References
 

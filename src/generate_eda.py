@@ -42,7 +42,6 @@ def main(opt):
     result["Not Null Count"] = train_X.notnull().sum()
     result["Null Count"] = train_X.isnull().sum()
     result["Number of Unique Values"] = train_X.nunique()
-    result["Some Unique Values"] = df_uniques(train_X)
     result["Types"] = train_X.dtypes
     result_df = pd.DataFrame(result)
     result_df.index.names = ['Features'] 
@@ -88,12 +87,6 @@ def main(opt):
 
     Chart.save(outfigure2)
     
-def df_uniques(df):
-    """Find unique values for each dataframe columns"""
-    result = {}
-    for x in df.columns:
-        result[df[x].name] = df[x].unique().tolist()[0:5]
-    return result
 
 if __name__ == "__main__":
     main(opt)
