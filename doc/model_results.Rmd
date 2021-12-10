@@ -68,7 +68,7 @@ knitr::kable(data.frame(test_data), caption = "Table 5 - Scores of Ridge Model o
 
 ```
 
-As we can see, the test score is a bit different from the validation score, suggesting there might be a lot of variance within the data set.
+As we can see, the R2 score is 0.38, suggesting that 38% of the variance can be explained by our model. The test score is a bit different from the validation score, so there might be a lot of variance within the data set. 
 
 To visualize the effectiveness of our models, we can plot the predicted salary values against the actual salary values and compare the correlation to a 45 degree line.
 
@@ -77,4 +77,7 @@ knitr::include_graphics('../results/figures/predicted_vs_actual_chart.png')
 
 ```
 
-Overall, the model provides an acceptable estimate within the range of 0 to 200,000. However, it performs poorly when trying to predict higher values (>500,000). Therefore, in future updates, we might be able to improve our results using non-linear models.
+Overall, the model provides an acceptable estimate within the range of 0 to 200,000. However, it performs poorly when trying to predict higher values (>500,000). There seems to be a trend of underestimating higher values. 
+
+So, several things could be done to further improve this model in future. First of all, doing some feature engineering might help us get a better model, such as including some polynomial terms. Also, we might be able to solve the problem of extreme values using different regularization/loss functions. Additionally, we can consider using some other tree-based ensemble models.
+

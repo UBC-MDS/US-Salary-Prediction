@@ -1,10 +1,10 @@
-Features,Not Null Count,Null Count,Number of Unique Values,Some Unique Values,Types
-how_old_are_you,15037,0,7,"['45-54', '25-34', '35-44', '55-64', '65 or over']",object
-industry,15008,29,675,"['Accounting, Banking & Finance', 'Engineering or Manufacturing', 'Education (Higher Education)', 'Computing or Tech', 'Health care']",object
-job_title,15037,0,7970,"['CPA', 'Sales Analyst 1', 'Director of Enrollment', 'Process Analyst', 'Senior Data Scientist']",object
-other_monetary_comp,11282,3755,583,"[10000.0, 2700.0, 0.0, 5000.0, 145000.0]",float64
-state,14914,123,108,"['California', 'Pennsylvania', 'Colorado', 'Virginia', 'Oregon']",object
-city,15006,31,2482,"['Palm Springs', 'Pittsburgh', 'Fort Collins', 'Arlington', 'Boulder']",object
-overall_years_of_professional_experience,15037,0,8,"['21 - 30 years', '11 - 20 years', '8 - 10 years', '2 - 4 years', '5-7 years']",object
-years_of_experience_in_field,15037,0,8,"['8 - 10 years', '5-7 years', '11 - 20 years', '2 - 4 years', '1 year or less']",object
-highest_level_of_education_completed,14935,102,6,"[""Master's degree"", 'College degree', 'Some college', 'PhD', 'High School']",object
+Features,Not Null Count,Null Count,Number of Unique Values,Types
+how_old_are_you,15037,0,7,object
+industry,15008,29,675,object
+job_title,15037,0,7970,object
+other_monetary_comp,11282,3755,583,float64
+state,14914,123,108,object
+city,15006,31,2482,object
+overall_years_of_professional_experience,15037,0,8,object
+years_of_experience_in_field,15037,0,8,object
+highest_level_of_education_completed,14935,102,6,object
