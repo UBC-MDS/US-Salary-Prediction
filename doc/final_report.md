@@ -67,7 +67,7 @@ to perform the data analysis and present results: Pandas (Reback et al.
 
 ### Data Exploration
 
-First, we looked at the distribution of our target “Annual Salary.” As
+First, we looked at the distribution of our target “Annual Salary”. As
 shown in the graph below, it seems to be a largely right-skewed
 distribution. And the median salary is around $80,000.
 
@@ -170,10 +170,10 @@ compared to processing time required.
 
 |   test.r2 |  train.r2 | Negative.RMSE | n_estimators |
 |----------:|----------:|--------------:|-------------:|
-| 0.4591470 | 0.9239460 |     -39190.14 |          100 |
-| 0.4563118 | 0.9223765 |     -39287.73 |           50 |
-| 0.4471095 | 0.9198172 |     -39623.05 |           20 |
-| 0.4274123 | 0.8997630 |     -40295.92 |           10 |
+| 0.4605616 | 0.9260365 |     -39139.02 |          100 |
+| 0.4530413 | 0.9163876 |     -39409.02 |           20 |
+| 0.4520001 | 0.9248364 |     -39449.32 |           50 |
+| 0.4325112 | 0.9032956 |     -40135.90 |           10 |
 
 Table 2.2 - Scores For Various n_estimators
 
@@ -238,16 +238,16 @@ the random forest model.
 
 | Significance.Rank | Ridge.Feature | Ridge.Coefficient | Random.Forest.Feature                    | RandomForest.Coefficient |
 |------------------:|:--------------|------------------:|:-----------------------------------------|-------------------------:|
-|                 1 | physician     |          74378.06 | other_monetary_comp                      |                   0.2626 |
-|                 2 | svp           |          63693.00 | years_of_experience_in_field             |                   0.0616 |
-|                 3 | md            |          62148.93 | highest_level_of_education_completed     |                   0.0530 |
-|                 4 | partner       |          58460.39 | computing                                |                   0.0489 |
-|                 5 | psychiatrist  |          53449.05 | overall_years_of_professional_experience |                   0.0193 |
-|                 6 | city_Bay Area |          46940.70 | how_old_are_you                          |                   0.0140 |
-|                 7 | equity        |          45417.85 | state_California                         |                   0.0134 |
-|                 8 | chief         |          43903.58 | senior                                   |                   0.0121 |
-|                 9 | machine       |          41832.51 | partner                                  |                   0.0121 |
-|                10 | onlyfans      |          41546.77 | director                                 |                   0.0117 |
+|                 1 | physician     |          74378.06 | other_monetary_comp                      |                   0.2637 |
+|                 2 | svp           |          63693.00 | years_of_experience_in_field             |                   0.0614 |
+|                 3 | md            |          62148.93 | highest_level_of_education_completed     |                   0.0512 |
+|                 4 | partner       |          58460.39 | computing                                |                   0.0447 |
+|                 5 | psychiatrist  |          53449.05 | overall_years_of_professional_experience |                   0.0170 |
+|                 6 | city_Bay Area |          46940.70 | how_old_are_you                          |                   0.0159 |
+|                 7 | equity        |          45417.85 | senior                                   |                   0.0140 |
+|                 8 | chief         |          43903.58 | state_California                         |                   0.0129 |
+|                 9 | machine       |          41832.51 | director                                 |                   0.0110 |
+|                10 | onlyfans      |          41546.77 | engineer                                 |                   0.0104 |
 
 Table 4 - Feature importance comparison
 
