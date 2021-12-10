@@ -1,13 +1,11 @@
 
-First, we looked at the distribution of our target "Annual Salary". 
-As shown in the graph below, it seems to be a largely right-skewed distribution.
-And the median salary is around \$80,000.
+To get a better idea of our data and how to process it, we conducted an exploratory data analysis. First, we looked at the distribution of our target "Annual Salary". As shown in the graph below, it seems to be a largely right-skewed distribution with a median salary of around \$80,000. This indicates to us that there are likely outliers with abnormally high income values which can cause overfitting in machine learning models if not addressed at the pre-processing stage.
 
 ```{r fig.cap = "Figure 1 - Distribution of Annual Salaries", echo = FALSE, fig.width = 5, fig.height = 4, out.width = "50%"}
 knitr::include_graphics('../results/figures/eda_target_distribution.png')
 ```
 
-Here is some general information about our dataset:
+Next, we gathered some general information about our dataset:
 
 To look at whether the features in our dataset are useful to predict annual salary, we first looked at a summary table about our features:
 
@@ -18,7 +16,7 @@ knitr::kable(data.frame(summary_data), caption = "Table 1 - Summary Information 
 ```
 We noticed that there are lots of null values in the additional information features (additional_context_on_job_title, additional_context_on_income, etc), and some of the variables have a lot of unique values. Therefore, later we dropped the two additional information features and used the bag-of-words model to extract features from text columns such as industry and job title.
 
-Since variables with 100s or 1000s of distinct values would be harder to visualize in a meaningful way, here we are exploring those variables that have < 10 unique values and check their distributions and relationships with the annual salary, 
+Since variables with 100s or 1000s of distinct values would be harder to visualize in a meaningful way, here we are exploring those variables that have < 10 unique values and check their distributions and relationships with the annual salary: 
 
 ```{r fig.cap = "Figure 2 - Salary For Various Categorial Features", echo = FALSE, fig.width = 5, fig.height = 4, out.width = "100%"}
 knitr::include_graphics('../results/figures/eda_category_distribution.png')
