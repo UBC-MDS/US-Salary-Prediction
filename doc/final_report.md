@@ -11,6 +11,7 @@ Cuthbert Chow, Rong Li, Andy Yang
     -   [Find the best model](#find-the-best-model)
     -   [Important Features](#important-features)
     -   [Results & Discussion](#results--discussion)
+-   [Conclusion & Reccomendations](#conclusion--reccomendations)
 -   [References](#references)
 
 ## Aim and Summary
@@ -67,13 +68,17 @@ to perform the data analysis and present results: Pandas (Reback et al.
 
 ### Data Exploration
 
-First, we looked at the distribution of our target “Annual Salary”. As
-shown in the graph below, it seems to be a largely right-skewed
-distribution. And the median salary is around $80,000.
+To get a better idea of our data and how to process it, we conducted an
+exploratory data analysis. First, we looked at the distribution of our
+target “Annual Salary.” As shown in the graph below, it seems to be a
+largely right-skewed distribution with a median salary of around
+$80,000. This indicates to us that there are likely outliers with
+abnormally high income values which can cause overfitting in machine
+learning models if not addressed at the pre-processing stage.
 
 <img src="../results/figures/eda_target_distribution.png" title="Figure 1 - Distribution of Annual Salaries" alt="Figure 1 - Distribution of Annual Salaries" width="50%" />
 
-Here is some general information about our dataset:
+Next, we gathered some general information about our dataset:
 
 To look at whether the features in our dataset are useful to predict
 annual salary, we first looked at a summary table about our features:
@@ -102,7 +107,7 @@ from text columns such as industry and job title.
 Since variables with 100s or 1000s of distinct values would be harder to
 visualize in a meaningful way, here we are exploring those variables
 that have \< 10 unique values and check their distributions and
-relationships with the annual salary,
+relationships with the annual salary:
 
 <img src="../results/figures/eda_category_distribution.png" title="Figure 2 - Salary For Various Categorial Features" alt="Figure 2 - Salary For Various Categorial Features" width="100%" />
 
@@ -117,11 +122,12 @@ the given features in the dataset. A linear model, Ridge, and an
 ensemble model, RandomForestRegressor. To ensure that the models were
 not overfitting to training data, we conducted some additional data
 cleaning. Firstly, *annual_salary* values within the training dataset of
-less than 10,000 USD or over 1,000,000 USD were removed. Additionally,
-text values that occurred less than 5 times in the *state* or *city*
-features were imputed with an empty string. This ensures that highly
-specific values will be removed which ultimately helps reduce
-overfitting.
+less than 10,000 USD or over 1,000,000 USD were removed. This is to
+prevent significant overfitting of our models since thesee values make
+up a small percentage of our overall data. Additionally, text values
+that occurred less than 5 times in the *state* or *city* features were
+imputed with an empty string. This ensures that highly specific values
+will be removed which also helps reduce overfitting.
 
 ### Find the best model
 
@@ -131,11 +137,12 @@ target of the test set can be 0, MAPE would not be a suitable metric in
 this scenario. We did not filter the test dataset to allow for MAPE
 scoring since this would bias the test set against evaluation data.
 
-Hyperparameter optimization was performed on the Ridge and Random Forest
-models. For Ridge, the alpha parameter was optimized with a search space
-spanning 10<sup>(−5)</sup> − 10<sup>(5)</sup> with 20 total iterations.
-The ideal alpha value which provided the highest r2 score was determined
-to be approximately 6.16 as seen by the results table.
+To optimize model performance, hyperparameter optimization was performed
+on the Ridge and Random Forest models. For Ridge, the alpha parameter
+was optimized with a search space spanning
+10<sup>(−5)</sup> − 10<sup>(5)</sup> with 20 total iterations. The ideal
+alpha value which provided the highest r2 score was determined to be
+approximately 6.16 as seen by the results table.
 
 |        r2 | Negative.RMSE |        alpha |
 |----------:|--------------:|-------------:|
@@ -179,15 +186,21 @@ Table 2.2 - Scores For Various n_estimators
 
 By comparing the two models’ cross-validation scores above, We
 ultimately selected the Ridge model with the alpha value around 6.16, as
-it provided better results on both r2 and root mean squared error.
+it provided better results on both r2 and root mean squared error,
+although the performance of each model was overall similar. As a result,
+we will evaluate this model’s performance against the test set and
+utilise it to make salary predictions.
 
 ### Important Features
 
-We can gain insight into how our model makes predictions by analysing
-the coefficient values associated with the regression. The tables below
-show the difference in salary that the model predicts given the change
-in the associated feature for the Ridge model. The first table displays
-the top 10 positive coefficients.
+One of our goals with this study was to gauge which factors are
+important in making salary predictions to give us insight into which
+roles/qualities are valued in an individual in terms of salary. We can
+gain insight into how our model makes predictions by analyzing the
+coefficient values associated with the regression. The tables below show
+the difference in salary that the model predicts given the change in the
+associated feature for the Ridge model. The first table displays the top
+10 positive coefficients.
 
 | Feature       | Coefficient |
 |:--------------|------------:|
@@ -289,10 +302,20 @@ to 200,000. However, it performs poorly when trying to predict higher
 values (>500,000). There seems to be a trend of underestimating higher
 values.
 
-So, several things could be done to further improve this model in
-future. First of all, doing some feature engineering might help us get a
-better model, such as including some polynomial terms. Also, we might be
-able to solve the problem of extreme values using different
+## Conclusion & Reccomendations
+
+Ultimately, our model achieved an R2 score of 0.38, which is somewhat
+unsatisfactory. This suggests that our model has difficulty explaining
+sources of variance, and has a particularly difficult time predicting
+larger salary values. This is likely a result of our training data
+processing and our efforts to prevent overfitting. The difference
+between our test and validation scores is still somewhat significant,
+suggesting an element of overfitting is still present.
+
+Several things could be done to further improve this model in future.
+First of all, doing some feature engineering might help us get a better
+model, such as including some polynomial terms. Also, we might be able
+to solve the problem of extreme values using different
 regularization/loss functions. Additionally, we can consider using some
 other tree-based ensemble models.
 

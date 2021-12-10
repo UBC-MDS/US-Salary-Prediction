@@ -5,9 +5,9 @@ date: "`r Sys.Date()`"
 output:
   github_document:
     toc: yes
-  html_document:
-    toc: yes
   pdf_document:
+    toc: yes
+  html_document:
     toc: yes
 bibliography: references.bib
 ---
@@ -51,6 +51,12 @@ The Python [@python] and R [@r] programming languages and the following Python a
 
 ```{r, child=c('model_results.Rmd')}
 ```
+  
+## Conclusion & Reccomendations
+
+Ultimately, our model achieved an R2 score of 0.38, which is somewhat unsatisfactory. This suggests that our model has difficulty explaining sources of variance, and has a particularly difficult time predicting larger salary values. This is likely a result of our training data processing and our efforts to prevent overfitting. The difference between our test and validation scores is still somewhat significant, suggesting an element of overfitting is still present.
+
+Several things could be done to further improve this model in future. First of all, doing some feature engineering might help us get a better model, such as including some polynomial terms. Also, we might be able to solve the problem of extreme values using different regularization/loss functions. Additionally, we can consider using some other tree-based ensemble models.
 
 ## References
 
